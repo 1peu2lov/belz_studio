@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useRef, type ReactNode } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import {
   ProjectFullBleed,
@@ -21,6 +19,7 @@ import {
   type ProjectSection,
 } from "@/data/projects";
 import { encodePublicPath } from "@/lib/assets";
+import { createScrollReveal } from "@/lib/scrollReveal";
 
 import styles from "./ProjectPageView.module.css";
 
@@ -29,34 +28,10 @@ type ProjectPageViewProps = {
 };
 
 function revealBlock(block: HTMLElement) {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    gsap.set(block, { clearProps: "all" });
-    return () => undefined;
-  }
-
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.set(block, { opacity: 0, y: 44 });
-
-  const timeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: block,
-      start: "top 80%",
-      end: "top 35%",
-      scrub: 0.65,
-    },
+  return createScrollReveal({
+    trigger: block,
+    targets: block,
   });
-
-  timeline.to(block, {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    ease: "none",
-  });
-
-  return () => {
-    timeline.scrollTrigger?.kill();
-    timeline.kill();
-  };
 }
 
 function Reveal({ children }: { children: ReactNode }) {

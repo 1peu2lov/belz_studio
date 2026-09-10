@@ -1,10 +1,9 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { Button } from "@/components/ui/Button/Button";
+import { createScrollReveal } from "@/lib/scrollReveal";
 
 import styles from "./ContactCTA.module.css";
 
@@ -40,33 +39,30 @@ export function ContactCTA({
 
     const targets = [eyebrow, titleEl, button];
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      gsap.set(targets, { clearProps: "all" });
-      return;
-    }
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.set(targets, { opacity: 0, y: 48 });
-
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: "top 78%",
-        end: "center 48%",
-        scrub: 0.65,
-      },
+    return createScrollReveal({
+      trigger: section,
+      targets,
+      from: { opacity: 0, y: 48 },
+      start: "top 78%",
+      end: "center 48%",
+      tweens: [
+        {
+          targets: eyebrow,
+          vars: { opacity: 1, y: 0, duration: 1, ease: "none" },
+          position: 0,
+        },
+        {
+          targets: titleEl,
+          vars: { opacity: 1, y: 0, duration: 1, ease: "none" },
+          position: 0.18,
+        },
+        {
+          targets: button,
+          vars: { opacity: 1, y: 0, duration: 1, ease: "none" },
+          position: 0.36,
+        },
+      ],
     });
-
-    timeline
-      .to(eyebrow, { opacity: 1, y: 0, duration: 1, ease: "none" }, 0)
-      .to(titleEl, { opacity: 1, y: 0, duration: 1, ease: "none" }, 0.18)
-      .to(button, { opacity: 1, y: 0, duration: 1, ease: "none" }, 0.36);
-
-    return () => {
-      timeline.scrollTrigger?.kill();
-      timeline.kill();
-    };
   }, []);
 
   return (

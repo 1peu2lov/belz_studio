@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { Button } from "@/components/ui/Button/Button";
+import { shouldSkipScrollReveal } from "@/lib/scrollReveal";
 
 import styles from "./ServicesSpaceship.module.css";
 
@@ -106,7 +107,7 @@ export function ServicesSpaceship() {
       return;
     }
 
-    if (reducedMotion) {
+    if (reducedMotion || shouldSkipScrollReveal()) {
       gsap.set([content, scene], { clearProps: "all", opacity: 1, y: 0, scale: 1 });
       return;
     }

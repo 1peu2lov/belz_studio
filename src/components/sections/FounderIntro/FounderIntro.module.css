@@ -24,7 +24,8 @@
 
 @media (min-width: 48rem) {
   .layout {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    grid-template-columns: minmax(0, 1fr) max-content;
+    align-items: center;
   }
 }
 
@@ -124,23 +125,23 @@
 }
 
 .portrait {
-  min-width: 0;
+  display: block;
+  width: max-content;
+  max-width: min(100%, 28rem);
+  height: max-content;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  align-self: center;
+  justify-self: center;
   will-change: transform, opacity;
 }
 
-.portraitFrame {
-  position: relative;
-  aspect-ratio: 3 / 3;
-  overflow: hidden;
-  border-radius: var(--border-radius);
-  background:
-    radial-gradient(ellipse at 65% 20%, rgba(24, 75, 75, 0.55), transparent 55%),
-    linear-gradient(160deg, #123e41 0%, #080c0d 100%);
-}
-
 .portraitImage {
-  object-fit: cover;
-  object-position: center;
+  display: block;
+  width: min(100%, 28rem);
+  height: auto !important;
+  border-radius: var(--border-radius);
 }
 
 @media (max-width: 47.9375rem) {
@@ -154,8 +155,11 @@
 
   .portrait {
     order: -1;
-    max-width: 22rem;
+    max-width: min(100%, 22rem);
     margin-inline: auto;
-    width: 100%;
+  }
+
+  .portraitImage {
+    width: min(100%, 22rem);
   }
 }

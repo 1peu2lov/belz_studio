@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import { createScrollReveal } from "@/lib/scrollReveal";
 
 import styles from "./StudioAudience.module.css";
 
@@ -24,46 +24,23 @@ export function StudioAudience() {
       return;
     }
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      gsap.set(lines, { clearProps: "all", opacity: 1, y: 0 });
-      return;
-    }
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.set(lines, { opacity: 0, y: 56 });
-
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: "top 78%",
-        end: "center 42%",
-        scrub: 0.65,
-      },
-    });
-
-    lines.forEach((line, index) => {
-      timeline.to(
-        line,
-        {
+    return createScrollReveal({
+      trigger: section,
+      targets: lines,
+      from: { opacity: 0, y: 56 },
+      start: "top 78%",
+      end: "center 42%",
+      tweens: lines.map((line, index) => ({
+        targets: line,
+        vars: {
           opacity: 1,
           y: 0,
           duration: 1,
           ease: "none",
         },
-        index * 0.35,
-      );
+        position: index * 0.35,
+      })),
     });
-
-    return () => {
-      timeline.scrollTrigger?.kill();
-      timeline.kill();
-      ScrollTrigger.getAll().forEach((trigger) => {
-        if (trigger.trigger === section) {
-          trigger.kill();
-        }
-      });
-    };
   }, []);
 
   return (

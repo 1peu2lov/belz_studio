@@ -38,8 +38,8 @@ export const founderIntro = {
       icon: "check" as const,
     },
   ],
-  /** Remplace par ta photo (jpg/png) si besoin */
-  portraitSrc: "/about/portrait.svg",
+  /** Photo de profil */
+  portraitSrc: "/Profil/profil3.jpg",
   portraitAlt: "Portrait du fondateur de Belz Studio",
 } as const;
 

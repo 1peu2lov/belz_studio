@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { ServicesSpaceship } from "@/components/sections/ServicesSpaceship/ServicesSpaceship";
 import {
@@ -10,6 +8,7 @@ import {
   serviceFormulas,
   serviceProcess,
 } from "@/data/services";
+import { createScrollReveal } from "@/lib/scrollReveal";
 
 import styles from "./page.module.css";
 
@@ -21,35 +20,17 @@ function revealSection(
     return () => undefined;
   }
 
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    gsap.set(targets, { clearProps: "all" });
-    return () => undefined;
-  }
-
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.set(targets, { opacity: 0, y: 44 });
-
-  const timeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: section,
-      start: "top 80%",
-      end: "top 35%",
-      scrub: 0.65,
+  return createScrollReveal({
+    trigger: section,
+    targets,
+    animation: {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "none",
+      stagger: 0.12,
     },
   });
-
-  timeline.to(targets, {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    ease: "none",
-    stagger: 0.12,
-  });
-
-  return () => {
-    timeline.scrollTrigger?.kill();
-    timeline.kill();
-  };
 }
 
 export function ServicesPageContent() {

@@ -9,6 +9,7 @@ import {
   founderIntro,
   type FounderHighlightIcon,
 } from "@/data/founder";
+import { shouldSkipScrollReveal } from "@/lib/scrollReveal";
 
 import styles from "./FounderIntro.module.css";
 
@@ -126,8 +127,12 @@ export function FounderIntro() {
       return;
     }
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      gsap.set([content, portrait, ...cards], { clearProps: "all" });
+    if (shouldSkipScrollReveal()) {
+      gsap.set([content, portrait, ...cards], {
+        clearProps: "all",
+        opacity: 1,
+        y: 0,
+      });
       return;
     }
 
@@ -203,15 +208,15 @@ export function FounderIntro() {
           </div>
 
           <div className={styles.portrait} ref={portraitRef}>
-            <div className={styles.portraitFrame}>
-              <Image
-                className={styles.portraitImage}
-                src={founderIntro.portraitSrc}
-                alt={founderIntro.portraitAlt}
-                fill
-                sizes="(max-width: 47.9375rem) 100vw, 40vw"
-              />
-            </div>
+            <Image
+              className={styles.portraitImage}
+              src={founderIntro.portraitSrc}
+              alt={founderIntro.portraitAlt}
+              width={1600}
+              height={1200}
+              sizes="(max-width: 47.9375rem) 22rem, 28rem"
+              quality={90}
+            />
           </div>
         </div>
       </div>
