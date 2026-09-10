@@ -9,11 +9,15 @@ import { cn } from "@/utils/cn";
 
 import styles from "./Navigation.module.css";
 
-export function Navigation() {
+type NavigationProps = {
+  className?: string;
+};
+
+export function Navigation({ className }: NavigationProps) {
   const pathname = usePathname();
 
   return (
-    <nav className={styles.nav} aria-label="Navigation principale">
+    <nav className={cn(styles.nav, className)} aria-label="Navigation principale">
       <ul className={styles.list}>
         {mainNavigation.map((item) => {
           const isActive =

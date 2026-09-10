@@ -75,6 +75,12 @@ html.lenis-smooth.lenis {
   scroll-behavior: auto;
 }
 
+@media (max-width: 47.9375rem) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

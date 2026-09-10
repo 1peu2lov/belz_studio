@@ -19,7 +19,13 @@
   background: #080c0d;
 }
 
+.menuOpen {
+  background: #080c0d;
+}
+
 .inner {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -50,8 +56,167 @@
   text-transform: uppercase;
 }
 
+.desktopNav {
+  display: none;
+}
+
+.burger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-right: -0.55rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--border-radius);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.burger:focus-visible {
+  outline: 2px solid #f9f9f9;
+  outline-offset: 3px;
+}
+
+.burgerLines {
+  position: relative;
+  display: block;
+  width: 1.35rem;
+  height: 0.85rem;
+}
+
+.burgerLine {
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transition:
+    transform 280ms var(--ease-out),
+    opacity 200ms var(--ease-out),
+    top 280ms var(--ease-out);
+}
+
+.burgerLine:nth-child(1) {
+  top: 0;
+}
+
+.burgerLine:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.burgerLine:nth-child(3) {
+  top: 100%;
+  transform: translateY(-100%);
+}
+
+.menuOpen .burgerLine:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.menuOpen .burgerLine:nth-child(2) {
+  opacity: 0;
+}
+
+.menuOpen .burgerLine:nth-child(3) {
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.mobilePanel {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  padding:
+    calc(var(--header-height) + var(--space-xl))
+    var(--page-padding)
+    var(--space-2xl);
+  background: #080c0d;
+  color: #f9f9f9;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 280ms var(--ease-out),
+    visibility 280ms var(--ease-out);
+}
+
+.mobilePanelOpen {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobileNav {
+  display: flex;
+  flex: 1;
+  align-items: stretch;
+  min-height: 0;
+}
+
+.mobileList {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(var(--space-md), 3vh, var(--space-xl));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mobileLink {
+  display: block;
+  color: color-mix(in srgb, #f9f9f9 72%, transparent);
+  font-family: var(--font-primary);
+  font-size: clamp(2rem, 9vw, 3.25rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: 1.05;
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.mobileLink:hover,
+.mobileLink:focus-visible {
+  color: #ffffff;
+}
+
+.mobileLink:focus-visible {
+  outline: 2px solid #f9f9f9;
+  outline-offset: 4px;
+}
+
+.mobileLinkActive {
+  color: #ffffff;
+}
+
+@media (min-width: 48rem) {
+  .burger {
+    display: none;
+  }
+
+  .desktopNav {
+    display: block;
+  }
+
+  .mobilePanel {
+    display: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .header {
+  .header,
+  .burgerLine,
+  .mobilePanel {
     transition: none;
   }
 }

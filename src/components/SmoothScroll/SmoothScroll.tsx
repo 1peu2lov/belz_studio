@@ -7,41 +7,66 @@ import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 
 /**
- * Smooth scroll global (Lenis) avec décélération douce,
- * synchronisé avec GSAP ScrollTrigger.
+ * Smooth scroll Lenis — desktop uniquement.
+ * Sur mobile / touch, on laisse le scroll natif.
  */
 export function SmoothScroll() {
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return;
-    }
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const desktop = window.matchMedia("(min-width: 48rem) and (pointer: fine)");
 
-    gsap.registerPlugin(ScrollTrigger);
+    let lenis: Lenis | null = null;
+    let onTick: ((time: number) => void) | null = null;
 
-    const lenis = new Lenis({
-      autoRaf: false,
-      lerp: 0.075,
-      smoothWheel: true,
-      wheelMultiplier: 0.9,
-      touchMultiplier: 1.2,
-      syncTouch: false,
-    });
-
-    lenis.on("scroll", ScrollTrigger.update);
-
-    const onTick = (time: number) => {
-      lenis.raf(time * 1000);
+    const teardown = () => {
+      document.documentElement.classList.remove("lenis-smooth");
+      if (onTick) {
+        gsap.ticker.remove(onTick);
+        onTick = null;
+      }
+      if (lenis) {
+        lenis.destroy();
+        lenis = null;
+      }
     };
 
-    gsap.ticker.add(onTick);
-    gsap.ticker.lagSmoothing(0);
+    const setup = () => {
+      teardown();
 
-    document.documentElement.classList.add("lenis-smooth");
+      if (reducedMotion.matches || !desktop.matches) {
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      lenis = new Lenis({
+        autoRaf: false,
+        lerp: 0.075,
+        smoothWheel: true,
+        wheelMultiplier: 0.9,
+        touchMultiplier: 1.2,
+        syncTouch: false,
+      });
+
+      lenis.on("scroll", ScrollTrigger.update);
+
+      onTick = (time: number) => {
+        lenis?.raf(time * 1000);
+      };
+
+      gsap.ticker.add(onTick);
+      gsap.ticker.lagSmoothing(0);
+      document.documentElement.classList.add("lenis-smooth");
+    };
+
+    setup();
+    reducedMotion.addEventListener("change", setup);
+    desktop.addEventListener("change", setup);
 
     return () => {
-      document.documentElement.classList.remove("lenis-smooth");
-      gsap.ticker.remove(onTick);
-      lenis.destroy();
+      reducedMotion.removeEventListener("change", setup);
+      desktop.removeEventListener("change", setup);
+      teardown();
     };
   }, []);
 
