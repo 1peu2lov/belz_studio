@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Belz Studio
 
-## Getting Started
+Site officiel du studio créatif **Belz Studio** — création de sites web sur mesure, identité visuelle et design pour entrepreneurs et indépendants (Bordeaux & à distance).
 
-First, run the development server:
+## Stack
+
+- Next.js (App Router)
+- React + TypeScript (strict)
+- CSS natif + CSS Modules
+- ESLint
+- pnpm
+
+## Démarrage
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Copier `.env.example` vers `.env.local` et ajuster `NEXT_PUBLIC_SITE_URL` si besoin.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Commandes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Commande | Description |
+| --- | --- |
+| `pnpm dev` | Serveur de développement |
+| `pnpm build` | Build de production |
+| `pnpm start` | Serveur de production |
+| `pnpm lint` | ESLint |
+| `pnpm typecheck` | Vérification TypeScript |
 
-## Learn More
+## Architecture
 
-To learn more about Next.js, take a look at the following resources:
+```text
+src/
+├── app/                 # Routes (App Router) + CSS Modules de page
+├── components/
+│   ├── Header/          # Mise en page
+│   ├── Footer/
+│   ├── Navigation/      # Client isolé (état actif)
+│   ├── ui/              # Composants réutilisables
+│   └── effects/         # Réservé aux futurs effets (shaders, R3F…)
+├── data/                # Données statiques (navigation, etc.)
+├── hooks/               # Hooks React (à venir)
+├── lib/                 # Config site & SEO
+├── types/               # Types TypeScript partagés
+└── utils/               # Utilitaires purs
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Alias d’import : `@/*` → `src/*`
+- `globals.css` : reset, variables, html/body, a11y, utilitaires globaux
+- SEO centralisé dans `src/lib/site.ts` et `src/lib/metadata.ts`
+- Typographie : **Supreme** (corps / UI) + **Pirulen** (gros titres display)
+- Fichiers dans `src/fonts/`, chargés via `next/font/local` (`src/fonts/index.ts`)
+- Composants serveur par défaut ; `"use client"` uniquement si nécessaire
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Pages
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/` — Accueil
+- `/projets` — Projets
+- `/services` — Services
+- `/le-studio` — Le studio
+- `/contact` — Contact

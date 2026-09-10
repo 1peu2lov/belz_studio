@@ -1,0 +1,111 @@
+.section {
+  --section-offset-y: clamp(-16rem, -42vh, -12rem);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 80svh;
+  align-items: center;
+  overflow: hidden;
+  /* Offset Y : remonte dans le fondu Hero */
+  margin-top: var(--section-offset-y);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    color-mix(in srgb, #080c0d 35%, transparent) 10%,
+    color-mix(in srgb, #080c0d 85%, transparent) 22%,
+    #080c0d 10%,
+    #080c0d 100%
+  );
+  color: #f9f9f9;
+  padding-block: calc(var(--space-3xl) + clamp(6rem, 16vh, 10rem)) var(--space-3xl);
+}
+
+.container {
+  width: calc(100% - (var(--page-padding) * 2));
+  margin-inline: auto;
+}
+
+@media (min-width: 48rem) {
+  .container {
+    width: var(--container-width);
+  }
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: clamp(2.25rem, 6.5vw, 7.25rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 0.95;
+  letter-spacing: var(--letter-spacing-tight);
+  text-align: left;
+  text-transform: none;
+}
+
+.staticLine {
+  display: block;
+}
+
+.secondLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.prefix {
+  flex: 0 0 auto;
+}
+
+.wordStage {
+  position: relative;
+  display: inline-block;
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: visible;
+  vertical-align: baseline;
+}
+
+.wordSizer {
+  display: block;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.wordLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.wordLayerSecondary {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.wordSlice {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  white-space: nowrap;
+  color: inherit;
+  opacity: 1;
+  will-change: transform, opacity;
+}
+
+@media (max-width: 47.9375rem) {
+  .section {
+    --section-offset-y: clamp(-12rem, -34vh, -8rem);
+    min-height: 70svh;
+    padding-block: calc(var(--space-2xl) + clamp(4.5rem, 14vh, 7rem)) var(--space-2xl);
+  }
+
+  .title {
+    font-size: clamp(1.85rem, 9.5vw, 3.25rem);
+    line-height: 1.02;
+  }
+}

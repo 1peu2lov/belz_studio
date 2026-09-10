@@ -1,0 +1,139 @@
+.section {
+  position: relative;
+  background: #080c0d;
+  color: #f9f9f9;
+  padding-block: var(--space-3xl);
+}
+
+.container {
+  width: calc(100% - (var(--page-padding) * 2));
+  margin-inline: auto;
+}
+
+@media (min-width: 48rem) {
+  .container {
+    width: var(--container-width);
+  }
+}
+
+.layout {
+  display: grid;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+@media (min-width: 48rem) {
+  .layout {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: clamp(var(--space-xl), 5vw, var(--space-3xl));
+  }
+}
+
+.controls {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.control,
+.ctaIcon {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: var(--border-width) solid color-mix(in srgb, #f9f9f9 18%, transparent);
+  background: color-mix(in srgb, #f9f9f9 8%, transparent);
+  color: #f9f9f9;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.control {
+  cursor: pointer;
+  padding: 0;
+}
+
+.control:hover,
+.control:focus-visible,
+.cta:hover .ctaIcon,
+.cta:focus-visible .ctaIcon {
+  background: color-mix(in srgb, #f9f9f9 14%, transparent);
+  border-color: color-mix(in srgb, #f9f9f9 35%, transparent);
+}
+
+.control:focus-visible,
+.cta:focus-visible {
+  outline: 2px solid #f9f9f9;
+  outline-offset: 3px;
+}
+
+.control:active {
+  transform: translateY(1px);
+}
+
+.arrowIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.content {
+  display: grid;
+  gap: clamp(var(--space-xl), 4vh, var(--space-2xl));
+  min-width: 0;
+}
+
+.columns {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 48rem) {
+  .columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(var(--space-lg), 3vw, var(--space-2xl));
+  }
+}
+
+.copy {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: clamp(1rem, 1.05rem + 0.35vw, 1.25rem);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.45;
+  letter-spacing: var(--letter-spacing-tight);
+  color: #f9f9f9;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-md);
+  width: fit-content;
+  color: #f9f9f9;
+  text-decoration: none;
+}
+
+.ctaLabel {
+  font-family: var(--font-primary);
+  font-size: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.cta:hover .ctaLabel,
+.cta:focus-visible .ctaLabel {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+@media (max-width: 47.9375rem) {
+  .section {
+    padding-block: var(--space-2xl);
+  }
+
+  .layout {
+    gap: var(--space-lg);
+  }
+}

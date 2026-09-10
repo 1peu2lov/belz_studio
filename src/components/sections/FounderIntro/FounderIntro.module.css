@@ -1,0 +1,161 @@
+.section {
+  position: relative;
+  background: #080c0d;
+  color: #f9f9f9;
+  padding-block: var(--space-3xl);
+}
+
+.container {
+  width: calc(100% - (var(--page-padding) * 2));
+  margin-inline: auto;
+}
+
+@media (min-width: 48rem) {
+  .container {
+    width: var(--container-width);
+  }
+}
+
+.layout {
+  display: grid;
+  gap: clamp(var(--space-xl), 4vw, var(--space-3xl));
+  align-items: center;
+}
+
+@media (min-width: 48rem) {
+  .layout {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  }
+}
+
+.content {
+  display: grid;
+  gap: var(--space-md);
+  min-width: 0;
+  will-change: transform, opacity;
+}
+
+.eyebrow {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: color-mix(in srgb, #f9f9f9 55%, transparent);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: clamp(1.85rem, 3.5vw, 3rem);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: #f9f9f9;
+}
+
+.copy {
+  display: grid;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+.copy p {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-tight);
+  color: color-mix(in srgb, #f9f9f9 78%, transparent);
+}
+
+.cards {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  list-style: none;
+}
+
+@media (min-width: 40rem) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  min-height: 3.25rem;
+  padding: 0.85rem 1rem;
+  border: var(--border-width) solid color-mix(in srgb, #184b4b 55%, #080c0d);
+  border-radius: var(--border-radius);
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, #123e41 35%, #080c0d) 0%,
+      color-mix(in srgb, #101b1e 80%, #080c0d) 100%
+    );
+  will-change: transform, opacity;
+}
+
+.cardLabel {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-tight);
+  color: color-mix(in srgb, #f9f9f9 88%, #bac5c6);
+}
+
+.cardIcon {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+  color: color-mix(in srgb, #bac5c6 70%, #184b4b);
+}
+
+.portrait {
+  min-width: 0;
+  will-change: transform, opacity;
+}
+
+.portraitFrame {
+  position: relative;
+  aspect-ratio: 3 / 3;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background:
+    radial-gradient(ellipse at 65% 20%, rgba(24, 75, 75, 0.55), transparent 55%),
+    linear-gradient(160deg, #123e41 0%, #080c0d 100%);
+}
+
+.portraitImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 47.9375rem) {
+  .section {
+    padding-block: var(--space-2xl);
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait {
+    order: -1;
+    max-width: 22rem;
+    margin-inline: auto;
+    width: 100%;
+  }
+}

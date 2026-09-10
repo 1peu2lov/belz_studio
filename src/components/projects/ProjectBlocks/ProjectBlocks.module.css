@@ -1,0 +1,292 @@
+.mediaCover {
+  object-fit: cover;
+  object-position: center;
+}
+
+.mediaContain {
+  object-fit: contain;
+  object-position: center;
+}
+
+.blockTitle {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  color: #f9f9f9;
+}
+
+.body {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: color-mix(in srgb, #f9f9f9 68%, transparent);
+}
+
+.fullBleedSection {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.fullBleedIntro {
+  display: grid;
+  gap: var(--space-md);
+  max-width: 40rem;
+}
+
+.fullBleed {
+  margin: 0;
+  width: 100%;
+}
+
+.fullBleedMaxSm,
+.fullBleedMaxMd,
+.fullBleedMaxLg {
+  margin-inline: auto;
+}
+
+.fullBleedMaxSm {
+  width: min(100%, 28rem);
+}
+
+.fullBleedMaxMd {
+  width: min(100%, 40rem);
+}
+
+.fullBleedMaxLg {
+  width: min(100%, 52rem);
+}
+
+.fullBleedFrame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background: transparent;
+}
+
+.fullBleedContain {
+  aspect-ratio: 16 / 9;
+  background: transparent;
+}
+
+@media (max-width: 47.9375rem) {
+  .fullBleedFrame {
+    aspect-ratio: 4 / 5;
+  }
+
+  .fullBleedContain {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+.pair {
+  display: grid;
+  gap: var(--space-md);
+}
+
+@media (min-width: 48rem) {
+  .pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+}
+
+.pairItem {
+  margin: 0;
+}
+
+.pairFrame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background: transparent;
+}
+
+.textMedia {
+  display: grid;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+@media (min-width: 48rem) {
+  .textMedia {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: clamp(var(--space-xl), 4vw, var(--space-3xl));
+  }
+
+  .textMediaMediaFirst {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  }
+
+  .textMediaMediaFirst .textMediaFigure {
+    order: -1;
+  }
+}
+
+.textMediaCopy {
+  display: grid;
+  gap: var(--space-md);
+  max-width: 36rem;
+}
+
+.textMediaFigure {
+  margin: 0;
+}
+
+.textMediaFrame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background: transparent;
+}
+
+.gridSection {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.gridIntro {
+  display: grid;
+  gap: var(--space-md);
+  max-width: 40rem;
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 40rem) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.gridItem {
+  margin: 0;
+}
+
+.gridFrame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background: transparent;
+}
+
+.videoSection {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.videoIntro {
+  display: grid;
+  gap: var(--space-md);
+  max-width: 40rem;
+}
+
+.videoFigure {
+  margin: 0;
+}
+
+.videoFigurePortrait {
+  max-width: min(22rem, 100%);
+  margin-inline: auto;
+}
+
+.videoPlayer {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--border-radius);
+  background: transparent;
+  object-fit: cover;
+}
+
+.videoPlayerPortrait {
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+}
+
+.videoAuto {
+  pointer-events: none;
+}
+
+.portraitRow {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.portraitIntro {
+  display: grid;
+  gap: var(--space-md);
+  max-width: 40rem;
+}
+
+.portraitLayout {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+@media (min-width: 48rem) {
+  .portraitLayout {
+    grid-template-columns: minmax(12rem, 0.42fr) minmax(0, 1fr);
+    gap: clamp(var(--space-lg), 4vw, var(--space-3xl));
+  }
+}
+
+.portraitVideoWrap {
+  margin: 0;
+  justify-self: center;
+  width: min(100%, 22rem);
+}
+
+.portraitVideo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--border-radius);
+  background: transparent;
+  object-fit: cover;
+}
+
+.portraitSide {
+  display: grid;
+  gap: var(--space-md);
+  min-width: 0;
+}
+
+.portraitSideCopy {
+  display: grid;
+  gap: var(--space-md);
+  max-width: 34rem;
+}
+
+.portraitSideFigure {
+  margin: 0;
+}
+
+.portraitSideFrame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background: transparent;
+}
+
+.portraitSideFrameContain {
+  aspect-ratio: 16 / 10;
+}

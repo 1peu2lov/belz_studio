@@ -1,0 +1,269 @@
+.page {
+  min-height: 100svh;
+  background: #080c0d;
+  color: #f9f9f9;
+  padding-top: calc(var(--header-height) + var(--space-3xl));
+}
+
+.container {
+  width: calc(100% - (var(--page-padding) * 2));
+  margin-inline: auto;
+  display: grid;
+  gap: clamp(var(--space-3xl), 10vh, 6.5rem);
+  padding-bottom: var(--space-3xl);
+}
+
+@media (min-width: 48rem) {
+  .container {
+    width: var(--container-width);
+  }
+}
+
+.hero {
+  display: grid;
+  gap: var(--space-md);
+  max-width: 40rem;
+}
+
+.hero > *,
+.blockHead,
+.domainRow,
+.formulaCard,
+.processStep {
+  will-change: transform, opacity;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: clamp(2.75rem, 8vw, 6rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 0.95;
+  letter-spacing: var(--letter-spacing-tight);
+  color: #f9f9f9;
+}
+
+.lead {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
+  color: color-mix(in srgb, #f9f9f9 58%, transparent);
+}
+
+.block {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.blockHead {
+  display: grid;
+  gap: var(--space-sm);
+  max-width: 52rem;
+}
+
+.blockTitle {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  color: #f9f9f9;
+}
+
+.blockLead {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: color-mix(in srgb, #f9f9f9 55%, transparent);
+}
+
+.domainList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: var(--border-width) solid color-mix(in srgb, #f9f9f9 14%, transparent);
+}
+
+.domainRow {
+  display: grid;
+  gap: var(--space-sm);
+  padding-block: clamp(1.25rem, 3vh, 1.75rem);
+  border-bottom: var(--border-width) solid color-mix(in srgb, #f9f9f9 14%, transparent);
+}
+
+@media (min-width: 48rem) {
+  .domainRow {
+    grid-template-columns: minmax(10rem, 0.4fr) minmax(0, 1fr);
+    gap: var(--space-xl);
+    align-items: baseline;
+  }
+}
+
+.domainLabel {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  color: #f9f9f9;
+}
+
+.domainCopy {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: color-mix(in srgb, #f9f9f9 62%, transparent);
+}
+
+.formulaGrid {
+  display: grid;
+  gap: var(--space-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 48rem) {
+  .formulaGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+}
+
+.formulaCard {
+  display: grid;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  border: var(--border-width) solid color-mix(in srgb, #184b4b 55%, #080c0d);
+  border-radius: var(--border-radius);
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, #123e41 30%, #080c0d) 0%,
+      color-mix(in srgb, #101b1e 85%, #080c0d) 100%
+    );
+}
+
+.formulaTop {
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.formulaName {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: #f9f9f9;
+}
+
+.formulaPrice {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: color-mix(in srgb, #bac5c6 75%, #184b4b);
+}
+
+.formulaSummary {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: color-mix(in srgb, #f9f9f9 68%, transparent);
+}
+
+.formulaIncludes {
+  display: grid;
+  gap: var(--space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.formulaIncludes li {
+  position: relative;
+  padding-left: 1rem;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  color: color-mix(in srgb, #f9f9f9 72%, transparent);
+}
+
+.formulaIncludes li::before {
+  content: "";
+  position: absolute;
+  top: 0.55em;
+  left: 0;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, #184b4b 80%, #bac5c6);
+}
+
+.processList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  border-top: var(--border-width) solid color-mix(in srgb, #f9f9f9 14%, transparent);
+}
+
+.processStep {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-md);
+  padding-block: clamp(1.25rem, 3vh, 1.85rem);
+  border-bottom: var(--border-width) solid color-mix(in srgb, #f9f9f9 14%, transparent);
+}
+
+@media (min-width: 48rem) {
+  .processStep {
+    gap: var(--space-xl);
+  }
+}
+
+.processIndex {
+  font-family: var(--font-primary);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  color: color-mix(in srgb, #184b4b 55%, #f9f9f9);
+}
+
+.processBody {
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.processName {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: var(--font-weight-bold);
+  color: #f9f9f9;
+}
+
+.processCopy {
+  margin: 0;
+  max-width: 40rem;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: color-mix(in srgb, #f9f9f9 62%, transparent);
+}
+
+@media (max-width: 47.9375rem) {
+  .page {
+    padding-top: calc(var(--header-height) + var(--space-2xl));
+  }
+
+  .container {
+    padding-bottom: var(--space-2xl);
+  }
+}

@@ -1,0 +1,203 @@
+.page {
+  min-height: 100svh;
+  background: #080c0d;
+  color: #f9f9f9;
+  padding-top: calc(var(--header-height) + var(--space-3xl));
+}
+
+.reveal {
+  will-change: transform, opacity;
+}
+
+.container {
+  width: calc(100% - (var(--page-padding) * 2));
+  margin-inline: auto;
+  display: grid;
+  gap: clamp(var(--space-3xl), 10vh, 6.5rem);
+  padding-bottom: var(--space-3xl);
+}
+
+@media (min-width: 48rem) {
+  .container {
+    width: var(--container-width);
+  }
+}
+
+.intro {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.introCopy {
+  display: grid;
+  gap: var(--space-md);
+  max-width: 44rem;
+}
+
+.eyebrow {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: color-mix(in srgb, #f9f9f9 55%, transparent);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 0.95;
+  letter-spacing: var(--letter-spacing-tight);
+  color: #f9f9f9;
+}
+
+.presentation {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: clamp(1.05rem, 1rem + 0.35vw, 1.25rem);
+  line-height: var(--line-height-normal);
+  color: color-mix(in srgb, #f9f9f9 68%, transparent);
+}
+
+.meta {
+  border-top: var(--border-width) solid color-mix(in srgb, #f9f9f9 14%, transparent);
+}
+
+.metaList {
+  margin: 0;
+  padding: 0;
+}
+
+.metaRow {
+  display: grid;
+  gap: var(--space-sm);
+  padding-block: clamp(1.1rem, 2.5vh, 1.5rem);
+  border-bottom: var(--border-width) solid color-mix(in srgb, #f9f9f9 14%, transparent);
+}
+
+@media (min-width: 48rem) {
+  .metaRow {
+    grid-template-columns: minmax(10rem, 0.35fr) minmax(0, 1fr);
+    gap: var(--space-xl);
+    align-items: baseline;
+  }
+}
+
+.metaLabel {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: color-mix(in srgb, #f9f9f9 48%, transparent);
+}
+
+.metaValue {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: #f9f9f9;
+}
+
+.splitText {
+  display: grid;
+  gap: var(--space-md);
+}
+
+@media (min-width: 48rem) {
+  .splitText {
+    grid-template-columns: minmax(12rem, 0.4fr) minmax(0, 1fr);
+    gap: var(--space-xl);
+    align-items: start;
+  }
+}
+
+.splitTitle {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  color: #f9f9f9;
+}
+
+.splitBody {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: color-mix(in srgb, #f9f9f9 68%, transparent);
+}
+
+.outcome {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.outcomeTitle {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  color: #f9f9f9;
+}
+
+.outcomeVideo {
+  margin: 0;
+}
+
+.outcomePlayer {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--border-radius);
+  background: transparent;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.outcomeActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.siteButton {
+  background: #ffffff;
+  color: #04161d;
+}
+
+.siteButton:hover:not(:disabled) {
+  background: color-mix(in srgb, #ffffff 90%, #04161d);
+}
+
+.siteButton:focus-visible {
+  outline-color: #ffffff;
+}
+
+.back {
+  width: fit-content;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: color-mix(in srgb, #f9f9f9 70%, transparent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.back:hover,
+.back:focus-visible {
+  color: #ffffff;
+}
+
+.fallback {
+  display: grid;
+  gap: var(--space-md);
+  max-width: 40rem;
+}
