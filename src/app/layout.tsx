@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs/Breadcrumbs";
 import { Footer } from "@/components/Footer/Footer";
 import { Header } from "@/components/Header/Header";
 import { SmoothScroll } from "@/components/SmoothScroll/SmoothScroll";
@@ -27,7 +28,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
           Aller au contenu
         </a>
         <Header />
-        <main id="contenu">{children}</main>
+        <main id="contenu" className="main">
+          <Breadcrumbs />
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

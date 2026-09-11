@@ -21,7 +21,7 @@ export const tournisProject: Project = {
     "Tournis — refonte UX/UI et site web d’une joaillerie à Bordeaux, en collaboration avec LP Design sur l’identité visuelle. Projet fictif.",
   card: {
     image: {
-      src: `${DIR}/Brandboard.png`,
+      src: `${DIR}/TOURNIS_card.svg`,
       alt: "Brandboard Tournis — identité visuelle",
     },
     hoverVideo: `${DIR}/siteweb_tournis_video.mp4`,

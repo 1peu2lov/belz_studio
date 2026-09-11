@@ -1,9 +1,11 @@
 import { cacolacProject } from "@/data/projects/cacolac";
+import { nadsProject } from "@/data/projects/nads";
 import { poesieDeLameProject } from "@/data/projects/poesie-de-lame";
 import { tournisProject } from "@/data/projects/tournis";
 import type {
   Project,
   ProjectMetaField,
+  ProjectStatus,
   ProjectTag,
 } from "@/data/projectTypes";
 
@@ -13,6 +15,7 @@ export type {
   ProjectMedia,
   ProjectMetaField,
   ProjectSection,
+  ProjectStatus,
   ProjectTag,
   ProjectTone,
 } from "@/data/projectTypes";
@@ -26,77 +29,31 @@ export const projectTagLabels: Record<ProjectTag, string> = {
   refonte: "Refonte",
   packaging: "Packaging",
   editorial: "Éditorial",
+  "en-cours": "En cours",
 };
+
+const teaserTones = ["petrol", "deep", "mist", "petrol"] as const;
+
+/** Placeholders anonymes — arrivent bientôt. */
+const teaserProjects: Project[] = teaserTones.map((tone, index) => ({
+  slug: `a-venir-${index + 1}`,
+  title: "????",
+  subtitle: "À venir",
+  cardDescription: "À venir",
+  tags: [],
+  status: "teaser" as ProjectStatus,
+  tone,
+}));
 
 export const projects: Project[] = [
   poesieDeLameProject,
   cacolacProject,
   tournisProject,
-  {
-    slug: "atelier-nord",
-    title: "Atelier Nord",
-    subtitle: "Identité & site",
-    tags: ["identite-visuelle", "site-web", "branding"],
-    tone: "petrol",
-  },
-  {
-    slug: "maison-lumen",
-    title: "Maison Lumen",
-    subtitle: "Site vitrine",
-    tags: ["site-web", "web-design"],
-    tone: "deep",
-  },
-  {
-    slug: "studio-rivage",
-    title: "Studio Rivage",
-    subtitle: "Direction artistique",
-    tags: ["direction-artistique", "branding"],
-    tone: "mist",
-  },
-  {
-    slug: "cabinet-echo",
-    title: "Cabinet Echo",
-    subtitle: "Identité visuelle",
-    tags: ["identite-visuelle", "branding"],
-    tone: "petrol",
-  },
-  {
-    slug: "ferme-brume",
-    title: "Ferme Brume",
-    subtitle: "Site & packaging",
-    tags: ["site-web", "packaging", "branding"],
-    tone: "deep",
-  },
-  {
-    slug: "agence-solaire",
-    title: "Agence Solaire",
-    subtitle: "Refonte web",
-    tags: ["refonte", "web-design", "site-web"],
-    tone: "mist",
-  },
-  {
-    slug: "atelier-sel",
-    title: "Atelier Sel",
-    subtitle: "Marque & digital",
-    tags: ["branding", "web-design", "identite-visuelle"],
-    tone: "petrol",
-  },
-  {
-    slug: "villa-horizon",
-    title: "Villa Horizon",
-    subtitle: "Site éditorial",
-    tags: ["editorial", "site-web", "web-design"],
-    tone: "deep",
-  },
-  {
-    slug: "labo-nuance",
-    title: "Labo Nuance",
-    subtitle: "Direction artistique",
-    tags: ["direction-artistique", "identite-visuelle"],
-    tone: "mist",
-  },
+  nadsProject,
+  ...teaserProjects,
 ];
 
+/** Tags affichés dans les filtres (hors placeholders). */
 export const allProjectTags: ProjectTag[] = [
   "site-web",
   "web-design",
@@ -106,14 +63,21 @@ export const allProjectTags: ProjectTag[] = [
   "refonte",
   "packaging",
   "editorial",
+  "en-cours",
 ];
+
+export function getProjectStatus(project: Project): ProjectStatus {
+  return project.status ?? "ready";
+}
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);
 }
 
 export function getAllProjectSlugs(): string[] {
-  return projects.map((project) => project.slug);
+  return projects
+    .filter((project) => getProjectStatus(project) !== "teaser")
+    .map((project) => project.slug);
 }
 
 export function filterProjects({

@@ -163,6 +163,98 @@ export function ProjectCard({
   }, []);
 
   const description = project.cardDescription ?? project.subtitle;
+  const status = project.status ?? "ready";
+  const isTeaser = status === "teaser";
+  const isInProgress =
+    status === "in-progress" || project.tags.includes("en-cours");
+  const isSvg = Boolean(imageSrc?.toLowerCase().endsWith(".svg"));
+
+  const media = (
+    <span
+      className={cn(
+        styles.media,
+        !imageSrc && styles[project.tone],
+        isTeaser && styles.mediaTeaser,
+        mediaClassName,
+      )}
+    >
+      {imageSrc ? (
+        <Image
+          className={cn(styles.image, videoReady && styles.imageHidden)}
+          src={imageSrc}
+          alt=""
+          fill
+          draggable={false}
+          unoptimized={isSvg}
+          sizes={
+            variant === "gallery"
+              ? "(max-width: 48rem) 78vw, 26rem"
+              : "(max-width: 40rem) 100vw, (max-width: 64rem) 50vw, 33vw"
+          }
+        />
+      ) : (
+        <span className={styles.mediaLabel} aria-hidden="true">
+          {project.title}
+        </span>
+      )}
+
+      {isInProgress ? <span className={styles.badge}>En cours</span> : null}
+
+      {canHoverVideo && !isTeaser ? (
+        <video
+          ref={videoRef}
+          className={cn(styles.video, videoReady && styles.videoVisible)}
+          muted
+          loop
+          playsInline
+          preload="none"
+          aria-hidden="true"
+          tabIndex={-1}
+          onLoadedData={() => {
+            if (hoverIntentRef.current) {
+              void playVideo();
+            }
+          }}
+          onCanPlay={() => {
+            if (hoverIntentRef.current) {
+              void playVideo();
+            }
+          }}
+          onError={() => {
+            setVideoFailed(true);
+            setVideoReady(false);
+          }}
+        />
+      ) : null}
+    </span>
+  );
+
+  const meta = (
+    <span className={styles.meta}>
+      <span className={styles.title}>{project.title}</span>
+      <span className={styles.description}>{description}</span>
+      {project.cardServices ? (
+        <span className={styles.services}>{project.cardServices}</span>
+      ) : null}
+    </span>
+  );
+
+  if (isTeaser) {
+    return (
+      <div
+        className={cn(
+          styles.card,
+          styles.teaser,
+          styles[variant],
+          className,
+        )}
+        aria-label="Projet à venir"
+      >
+        {media}
+        {meta}
+      </div>
+    );
+  }
 
   return (
     <Link
@@ -175,66 +267,8 @@ export function ProjectCard({
       onFocus={onEnter}
       onBlur={onLeave}
     >
-      <span
-        className={cn(
-          styles.media,
-          !imageSrc && styles[project.tone],
-          mediaClassName,
-        )}
-      >
-        {imageSrc ? (
-          <Image
-            className={cn(styles.image, videoReady && styles.imageHidden)}
-            src={imageSrc}
-            alt=""
-            fill
-            sizes={
-              variant === "gallery"
-                ? "(max-width: 48rem) 78vw, 26rem"
-                : "(max-width: 40rem) 100vw, (max-width: 64rem) 50vw, 33vw"
-            }
-          />
-        ) : (
-          <span className={styles.mediaLabel} aria-hidden="true">
-            {project.title}
-          </span>
-        )}
-
-        {canHoverVideo ? (
-          <video
-            ref={videoRef}
-            className={cn(styles.video, videoReady && styles.videoVisible)}
-            muted
-            loop
-            playsInline
-            preload="none"
-            aria-hidden="true"
-            tabIndex={-1}
-            onLoadedData={() => {
-              if (hoverIntentRef.current) {
-                void playVideo();
-              }
-            }}
-            onCanPlay={() => {
-              if (hoverIntentRef.current) {
-                void playVideo();
-              }
-            }}
-            onError={() => {
-              setVideoFailed(true);
-              setVideoReady(false);
-            }}
-          />
-        ) : null}
-      </span>
-
-      <span className={styles.meta}>
-        <span className={styles.title}>{project.title}</span>
-        <span className={styles.description}>{description}</span>
-        {project.cardServices ? (
-          <span className={styles.services}>{project.cardServices}</span>
-        ) : null}
-      </span>
+      {media}
+      {meta}
     </Link>
   );
 }

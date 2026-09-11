@@ -121,9 +121,48 @@
   color: color-mix(in srgb, #bac5c6 75%, #184b4b);
 }
 
+.badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  z-index: 2;
+  padding: 0.35rem 0.55rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, #080c0d 72%, transparent);
+  border: 1px solid color-mix(in srgb, #f9f9f9 18%, transparent);
+  font-family: var(--font-primary);
+  font-size: 0.65rem;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f9f9f9;
+}
+
+.teaser {
+  cursor: default;
+  pointer-events: none;
+}
+
+.teaser .title {
+  letter-spacing: 0.18em;
+}
+
+.mediaTeaser .mediaLabel {
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  letter-spacing: 0.28em;
+  color: color-mix(in srgb, #f9f9f9 42%, transparent);
+}
+
 .card:hover .title,
 .card:focus-visible .title {
   color: #ffffff;
+}
+
+.teaser:hover .title {
+  color: #f9f9f9;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -134,5 +173,10 @@
   .card:hover .media,
   .card:focus-visible .media {
     transform: scale(1.015);
+  }
+
+  .teaser:hover .media,
+  .teaser:focus-visible .media {
+    transform: none;
   }
 }

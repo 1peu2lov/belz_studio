@@ -256,6 +256,9 @@ function renderSection(project: Project, section: ProjectSection, index: number)
 
 export function ProjectPageView({ project }: ProjectPageViewProps) {
   const sections = project.sections;
+  const status = project.status ?? "ready";
+  const isInProgress =
+    status === "in-progress" || project.tags.includes("en-cours");
 
   if (!sections || sections.length === 0) {
     return (
@@ -263,12 +266,20 @@ export function ProjectPageView({ project }: ProjectPageViewProps) {
         <div className={styles.container}>
           <Reveal>
             <section className={styles.fallback} aria-labelledby="project-title">
-              <p className={styles.eyebrow}>Projet</p>
+              <p className={styles.eyebrow}>
+                {isInProgress ? "En cours" : "Projet"}
+              </p>
               <h1 id="project-title" className={styles.title}>
                 {project.title}
               </h1>
-              <p className={styles.presentation}>{project.subtitle}</p>
-              <p className={styles.splitBody}>Contenu à venir.</p>
+              <p className={styles.presentation}>
+                {isInProgress
+                  ? "Projet en cours."
+                  : project.subtitle}
+              </p>
+              {!isInProgress ? (
+                <p className={styles.splitBody}>Contenu à venir.</p>
+              ) : null}
               <Link href="/projets" className={styles.back}>
                 Retour aux projets
               </Link>

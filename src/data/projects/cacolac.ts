@@ -21,7 +21,7 @@ export const cacolacProject: Project = {
     "Refonte packaging et identité visuelle Cacolac — gammes Original, menthe, noisette et lait-fraise.",
   card: {
     image: {
-      src: `${DIR}/Logo_cacolac.jpg`,
+      src: `${DIR}/cacola_card.svg`,
       alt: "Identité visuelle Cacolac",
     },
     hoverVideo: `${DIR}/cacola_site_video.mp4`,

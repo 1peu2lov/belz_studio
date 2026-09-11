@@ -14,7 +14,7 @@ import { projects } from "@/data/projects";
 
 import styles from "./ProjectGallery.module.css";
 
-const DRAG_THRESHOLD_PX = 6;
+const DRAG_THRESHOLD_PX = 10;
 
 export function ProjectGallery() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -26,7 +26,9 @@ export function ProjectGallery() {
   const startXRef = useRef(0);
   const pointerStartRef = useRef(0);
   const isDraggingRef = useRef(false);
+  const dragArmedRef = useRef(false);
   const didDragRef = useRef(false);
+  const suppressClickRef = useRef(false);
   const velocityRef = useRef(0);
   const lastXRef = useRef(0);
   const lastTimeRef = useRef(0);
@@ -46,17 +48,20 @@ export function ProjectGallery() {
     };
   }, []);
 
-  const setX = useCallback((value: number, withBounds = true) => {
-    const track = trackRef.current;
-    if (!track) {
-      return;
-    }
+  const setX = useCallback(
+    (value: number, withBounds = true) => {
+      const track = trackRef.current;
+      if (!track) {
+        return;
+      }
 
-    const { min, max } = getBounds();
-    const next = withBounds ? Math.min(max, Math.max(min, value)) : value;
-    xRef.current = next;
-    gsap.set(track, { x: next });
-  }, [getBounds]);
+      const { min, max } = getBounds();
+      const next = withBounds ? Math.min(max, Math.max(min, value)) : value;
+      xRef.current = next;
+      gsap.set(track, { x: next });
+    },
+    [getBounds],
+  );
 
   useEffect(() => {
     const track = trackRef.current;
@@ -151,10 +156,10 @@ export function ProjectGallery() {
     }
 
     activePointerRef.current = event.pointerId;
-    viewport.setPointerCapture(event.pointerId);
-
-    isDraggingRef.current = true;
+    dragArmedRef.current = true;
+    isDraggingRef.current = false;
     didDragRef.current = false;
+    suppressClickRef.current = false;
     startXRef.current = xRef.current;
     pointerStartRef.current = event.clientX;
     lastXRef.current = event.clientX;
@@ -162,18 +167,39 @@ export function ProjectGallery() {
     velocityRef.current = 0;
 
     gsap.killTweensOf(trackRef.current);
-    viewport.classList.add(styles.isDragging);
   };
 
   const onPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
-    if (!isDraggingRef.current || activePointerRef.current !== event.pointerId) {
+    if (
+      !dragArmedRef.current ||
+      activePointerRef.current !== event.pointerId
+    ) {
       return;
     }
 
     const delta = event.clientX - pointerStartRef.current;
-    if (Math.abs(delta) > DRAG_THRESHOLD_PX) {
+
+    // Drag seulement après le seuil → le clic reste possible.
+    if (!isDraggingRef.current) {
+      if (Math.abs(delta) < DRAG_THRESHOLD_PX) {
+        return;
+      }
+
+      const viewport = viewportRef.current;
+      if (!viewport) {
+        return;
+      }
+
+      isDraggingRef.current = true;
       didDragRef.current = true;
+      suppressClickRef.current = true;
+      viewport.setPointerCapture(event.pointerId);
+      viewport.classList.add(styles.isDragging);
+      startXRef.current = xRef.current;
+      pointerStartRef.current = event.clientX;
     }
+
+    event.preventDefault();
 
     const now = performance.now();
     const dt = now - lastTimeRef.current;
@@ -183,9 +209,9 @@ export function ProjectGallery() {
     lastXRef.current = event.clientX;
     lastTimeRef.current = now;
 
+    const moveDelta = event.clientX - pointerStartRef.current;
     const { min, max } = getBounds();
-    const raw = startXRef.current + delta;
-    // Légère résistance hors bornes
+    const raw = startXRef.current + moveDelta;
     let next = raw;
     if (raw > max) {
       next = max + (raw - max) * 0.25;
@@ -204,11 +230,18 @@ export function ProjectGallery() {
 
     const viewport = viewportRef.current;
     const track = trackRef.current;
+    const wasDragging = isDraggingRef.current;
+
+    dragArmedRef.current = false;
     isDraggingRef.current = false;
     activePointerRef.current = null;
     viewport?.classList.remove(styles.isDragging);
 
-    if (!track) {
+    if (viewport?.hasPointerCapture(pointerId)) {
+      viewport.releasePointerCapture(pointerId);
+    }
+
+    if (!wasDragging || !track) {
       return;
     }
 
@@ -238,9 +271,11 @@ export function ProjectGallery() {
   };
 
   const onCardClick = (event: ReactMouseEvent<HTMLAnchorElement>) => {
-    if (didDragRef.current) {
+    if (suppressClickRef.current || didDragRef.current) {
       event.preventDefault();
       event.stopPropagation();
+      suppressClickRef.current = false;
+      didDragRef.current = false;
     }
   };
 
@@ -271,7 +306,9 @@ export function ProjectGallery() {
                 className={styles.card}
                 mediaClassName={styles.media}
                 draggable={false}
-                onClick={onCardClick}
+                onClick={
+                  project.status === "teaser" ? undefined : onCardClick
+                }
               />
             </li>
           ))}

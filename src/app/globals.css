@@ -112,6 +112,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.main {
+  position: relative;
+  flex: 1 0 auto;
+}
+
 /* Titres courants en Supreme ; les héros passent en Pirulen via .display-title */
 h1,
 h2,

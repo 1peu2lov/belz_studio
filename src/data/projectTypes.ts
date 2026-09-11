@@ -8,7 +8,11 @@ export type ProjectTag =
   | "direction-artistique"
   | "refonte"
   | "packaging"
-  | "editorial";
+  | "editorial"
+  | "en-cours";
+
+/** `teaser` = placeholder non cliquable (????). */
+export type ProjectStatus = "ready" | "in-progress" | "teaser";
 
 export type ProjectMedia = {
   src: string;
@@ -126,6 +130,13 @@ export type Project = {
   subtitle: string;
   tags: ProjectTag[];
   tone: ProjectTone;
+  /**
+   * Statut éditorial.
+   * - ready (défaut)
+   * - in-progress : projet annoncé, page minimale
+   * - teaser : placeholder ???? non cliquable
+   */
+  status?: ProjectStatus;
   /** Description courte pour la card (si absente → subtitle). */
   cardDescription?: string;
   /** Ligne prestations affichée sur la card. */
