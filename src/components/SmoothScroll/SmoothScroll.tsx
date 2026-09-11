@@ -6,6 +6,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 
+import { setLenisInstance } from "@/lib/scrollToTop";
+
 /**
  * Smooth scroll Lenis — desktop uniquement.
  * Sur mobile / touch, on laisse le scroll natif.
@@ -20,6 +22,7 @@ export function SmoothScroll() {
 
     const teardown = () => {
       document.documentElement.classList.remove("lenis-smooth");
+      setLenisInstance(null);
       if (onTick) {
         gsap.ticker.remove(onTick);
         onTick = null;
@@ -47,6 +50,8 @@ export function SmoothScroll() {
         touchMultiplier: 1.2,
         syncTouch: false,
       });
+
+      setLenisInstance(lenis);
 
       lenis.on("scroll", ScrollTrigger.update);
 

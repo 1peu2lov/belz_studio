@@ -138,11 +138,5 @@ export const tournisProject: Project = {
       siteUrl: "https://tournis.netlify.app/",
       siteLabel: "Voir le site",
     },
-    {
-      type: "contact",
-      title: "Un projet joaillerie, branding ou site web ?",
-      buttonLabel: "Parlons de votre projet",
-      href: "/contact",
-    },
   ],
 };

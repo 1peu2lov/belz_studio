@@ -240,14 +240,8 @@ function renderSection(project: Project, section: ProjectSection, index: number)
       );
 
     case "contact":
-      return (
-        <ContactCTA
-          key={`contact-${index}`}
-          title={section.title}
-          buttonLabel={section.buttonLabel}
-          href={section.href}
-        />
-      );
+      // CTA global unique — rendu via <ContactCTA /> hors sections projet.
+      return null;
 
     default:
       return null;
@@ -262,59 +256,62 @@ export function ProjectPageView({ project }: ProjectPageViewProps) {
 
   if (!sections || sections.length === 0) {
     return (
-      <div className={styles.page}>
-        <div className={styles.container}>
-          <Reveal>
-            <section className={styles.fallback} aria-labelledby="project-title">
-              <p className={styles.eyebrow}>
-                {isInProgress ? "En cours" : "Projet"}
-              </p>
-              <h1 id="project-title" className={styles.title}>
-                {project.title}
-              </h1>
-              <p className={styles.presentation}>
-                {isInProgress
-                  ? "Projet en cours."
-                  : project.subtitle}
-              </p>
-              {!isInProgress ? (
-                <p className={styles.splitBody}>Contenu à venir.</p>
-              ) : null}
-              <Link href="/projets" className={styles.back}>
-                Retour aux projets
-              </Link>
-            </section>
-          </Reveal>
+      <>
+        <div className={styles.page}>
+          <div className={styles.container}>
+            <Reveal>
+              <section
+                className={styles.fallback}
+                aria-labelledby="project-title"
+              >
+                <p className={styles.eyebrow}>
+                  {isInProgress ? "En cours" : "Projet"}
+                </p>
+                <h1 id="project-title" className={styles.title}>
+                  {project.title}
+                </h1>
+                <p className={styles.presentation}>
+                  {isInProgress ? "Projet en cours." : project.subtitle}
+                </p>
+                {!isInProgress ? (
+                  <p className={styles.splitBody}>Contenu à venir.</p>
+                ) : null}
+                <Link href="/projets" className={styles.back}>
+                  Retour aux projets
+                </Link>
+              </section>
+            </Reveal>
+          </div>
         </div>
-      </div>
+        <ContactCTA />
+      </>
     );
   }
 
   const contentSections = sections.filter(
     (section) => section.type !== "contact",
   );
-  const contactSection = sections.find((section) => section.type === "contact");
 
   return (
-    <div className={styles.page}>
-      <div className={styles.container}>
-        {contentSections.map((section, index) => {
-          const content = renderSection(project, section, index);
-          if (!content) {
-            return null;
-          }
+    <>
+      <div className={styles.page}>
+        <div className={styles.container}>
+          {contentSections.map((section, index) => {
+            const content = renderSection(project, section, index);
+            if (!content) {
+              return null;
+            }
 
-          return <Reveal key={`${section.type}-${index}`}>{content}</Reveal>;
-        })}
-        <Reveal>
-          <Link href="/projets" className={styles.back}>
-            Retour aux projets
-          </Link>
-        </Reveal>
+            return <Reveal key={`${section.type}-${index}`}>{content}</Reveal>;
+          })}
+          <Reveal>
+            <Link href="/projets" className={styles.back}>
+              Retour aux projets
+            </Link>
+          </Reveal>
+        </div>
       </div>
-      {contactSection
-        ? renderSection(project, contactSection, contentSections.length)
-        : null}
-    </div>
+      <ContactCTA />
+    </>
   );
 }

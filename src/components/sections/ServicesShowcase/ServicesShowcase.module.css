@@ -29,6 +29,7 @@
   display: grid;
   gap: var(--space-xl);
   align-items: center;
+  overflow: visible;
 }
 
 @media (min-width: 48rem) {
@@ -43,8 +44,8 @@
   width: 100%;
   max-width: none;
   aspect-ratio: 5 / 5;
-  overflow: hidden;
-  border-radius: var(--border-radius);
+  overflow: visible;
+  border-radius: 0;
   background: transparent;
   opacity: 0;
   transition: opacity var(--duration-slow) var(--ease-out);
@@ -69,9 +70,35 @@
   pointer-events: none;
 }
 
+.mediaPanelImage {
+  place-items: center;
+  padding: var(--space-sm);
+  background: transparent;
+}
+
 .mediaPanelActive {
   opacity: 1;
   transform: scale(1);
+}
+
+.mediaImageWrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.mediaImageWrapRounded {
+  overflow: hidden;
+  border-radius: var(--border-radius);
+}
+
+.mediaImageWrapRounded .mediaImage {
+  object-fit: cover;
+}
+
+.mediaImage {
+  object-fit: contain;
+  object-position: center;
 }
 
 .mediaLabel {

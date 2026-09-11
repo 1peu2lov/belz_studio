@@ -7,6 +7,7 @@ import { useEffect, useId, useState, useSyncExternalStore } from "react";
 import { Navigation } from "@/components/Navigation/Navigation";
 import { mainNavigation } from "@/data/navigation";
 import { siteConfig } from "@/lib/site";
+import { scrollToTop } from "@/lib/scrollToTop";
 import { cn } from "@/utils/cn";
 
 import styles from "./Header.module.css";
@@ -77,8 +78,15 @@ export function Header() {
         <Link
           className={styles.brand}
           href="/"
+          scroll={false}
           aria-label={`${siteConfig.name} — Accueil`}
-          onClick={() => setMenuOpen(false)}
+          onClick={(event) => {
+            setMenuOpen(false);
+            if (pathname === "/") {
+              event.preventDefault();
+              scrollToTop();
+            }
+          }}
         >
           <span className={styles.brandMark}>{siteConfig.name}</span>
         </Link>
@@ -115,6 +123,7 @@ export function Header() {
                   ? pathname === "/"
                   : pathname === item.href ||
                     pathname.startsWith(`${item.href}/`);
+              const isExactPage = pathname === item.href;
 
               return (
                 <li key={item.href}>
@@ -124,8 +133,15 @@ export function Header() {
                       isActive && styles.mobileLinkActive,
                     )}
                     href={item.href}
+                    scroll={false}
                     aria-current={isActive ? "page" : undefined}
-                    onClick={() => setMenuOpen(false)}
+                    onClick={(event) => {
+                      setMenuOpen(false);
+                      if (isExactPage) {
+                        event.preventDefault();
+                        scrollToTop();
+                      }
+                    }}
                   >
                     {item.label}
                   </Link>

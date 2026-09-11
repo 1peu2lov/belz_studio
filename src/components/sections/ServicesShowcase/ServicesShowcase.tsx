@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 import { services } from "@/data/services";
@@ -24,16 +25,40 @@ export function ServicesShowcase() {
             className={`${styles.media} ${activeId ? styles.mediaVisible : ""}`}
             aria-hidden="true"
           >
-            {services.map((service) => (
-              <div
-                key={service.id}
-                className={`${styles.mediaPanel} ${styles[service.tone]} ${
-                  service.id === activeId ? styles.mediaPanelActive : ""
-                }`}
-              >
-                <span className={styles.mediaLabel}>{service.label}</span>
-              </div>
-            ))}
+            {services.map((service) => {
+              const isActive = service.id === activeId;
+              const hasImage = Boolean(service.image);
+
+              return (
+                <div
+                  key={service.id}
+                  className={`${styles.mediaPanel} ${
+                    hasImage ? styles.mediaPanelImage : styles[service.tone]
+                  } ${isActive ? styles.mediaPanelActive : ""}`}
+                >
+                  {service.image ? (
+                    <div
+                      className={`${styles.mediaImageWrap} ${
+                        !service.image.src.toLowerCase().endsWith(".png")
+                          ? styles.mediaImageWrapRounded
+                          : ""
+                      }`}
+                    >
+                      <Image
+                        className={styles.mediaImage}
+                        src={service.image.src}
+                        alt=""
+                        fill
+                        sizes="(max-width: 48rem) 100vw, 40vw"
+                        priority={service.id === "sites-web"}
+                      />
+                    </div>
+                  ) : (
+                    <span className={styles.mediaLabel}>{service.label}</span>
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           <ul className={styles.list} onMouseLeave={() => setActiveId(null)}>
@@ -51,7 +76,11 @@ export function ServicesShowcase() {
                     className={`${styles.item} ${isActive ? styles.itemActive : ""}`}
                     onFocus={() => setActiveId(service.id)}
                     onBlur={(event) => {
-                      if (!event.currentTarget.closest(`.${styles.list}`)?.contains(event.relatedTarget as Node | null)) {
+                      if (
+                        !event.currentTarget
+                          .closest(`.${styles.list}`)
+                          ?.contains(event.relatedTarget as Node | null)
+                      ) {
                         setActiveId(null);
                       }
                     }}

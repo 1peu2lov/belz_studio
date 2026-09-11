@@ -133,11 +133,5 @@ export const cacolacProject: Project = {
       siteUrl: "https://1peu2lov-cacolacsite.vercel.app/",
       siteLabel: "Voir le site",
     },
-    {
-      type: "contact",
-      title: "Un projet à faire grandir ?",
-      buttonLabel: "Parlons de votre projet",
-      href: "/contact",
-    },
   ],
 };

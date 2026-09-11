@@ -2,6 +2,11 @@ export type ServiceItem = {
   id: string;
   label: string;
   tone: "petrol" | "deep" | "mist" | "ember" | "slate" | "grove" | "ink";
+  /** Visuel hover (PNG transparent recommandé). */
+  image?: {
+    src: string;
+    alt: string;
+  };
 };
 
 /** Liste courte pour la home (hover showcase). */
@@ -10,26 +15,46 @@ export const services: ServiceItem[] = [
     id: "sites-web",
     label: "Sites web sur mesure",
     tone: "ember",
+    image: {
+      src: "/services/sitewebs_image.png",
+      alt: "Mockup responsive — sites web sur mesure",
+    },
   },
   {
     id: "web-design",
     label: "Web design",
     tone: "mist",
+    image: {
+      src: "/services/webdesign_image.jpg",
+      alt: "Direction web design — maquettes et interface",
+    },
   },
   {
     id: "identite-visuelle",
     label: "Identité visuelle",
     tone: "petrol",
+    image: {
+      src: "/services/identite_visuelle_image.jpg",
+      alt: "Identité visuelle — logo et univers de marque",
+    },
   },
   {
     id: "supports-communication",
     label: "Supports de communication",
     tone: "slate",
+    image: {
+      src: "/services/Communication_image.png",
+      alt: "Supports de communication — print et digital",
+    },
   },
   {
     id: "maintenance-accompagnement",
     label: "Maintenance & accompagnement",
     tone: "ink",
+    image: {
+      src: "/services/maintenance.jpg",
+      alt: "Maintenance et accompagnement — suivi de projet",
+    },
   },
 ];
 

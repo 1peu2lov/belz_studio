@@ -105,11 +105,5 @@ export const poesieDeLameProject: Project = {
       siteUrl: "https://www.poesiedelame.com/",
       siteLabel: "Voir le site",
     },
-    {
-      type: "contact",
-      title: "Un projet à faire grandir ?",
-      buttonLabel: "Parlons de votre projet",
-      href: "/contact",
-    },
   ],
 };
