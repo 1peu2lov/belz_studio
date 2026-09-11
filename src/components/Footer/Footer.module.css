@@ -56,13 +56,38 @@
   font-size: var(--font-size-sm);
 }
 
+.bottom {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-md);
+}
+
+.legalLink {
+  color: color-mix(in srgb, #f9f9f9 45%, transparent);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.legalLink:hover,
+.legalLink:focus-visible {
+  color: #ffffff;
+}
+
 @media (min-width: 48rem) {
   .inner {
     grid-template-columns: 1fr auto;
     align-items: start;
   }
 
-  .copyright {
+  .bottom {
     grid-column: 1 / -1;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
   }
 }

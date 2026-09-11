@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
         destination: "/le-studio",
         permanent: true,
       },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "belzstudio.fr" }],
+        destination: "https://www.belzstudio.fr/:path*",
+        permanent: true,
+      },
     ];
   },
 };

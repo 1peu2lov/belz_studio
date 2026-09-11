@@ -36,9 +36,19 @@ export function Footer() {
           </ul>
         </nav>
 
-        <p className={styles.copyright}>
-          © {year} {siteConfig.name}. Tous droits réservés.
-        </p>
+        <div className={styles.bottom}>
+          <p className={styles.copyright}>
+            © {year} {siteConfig.name}. Tous droits réservés.
+          </p>
+          <nav className={styles.legal} aria-label="Informations légales">
+            <Link className={styles.legalLink} href="/mentions-legales">
+              Mentions légales
+            </Link>
+            <Link className={styles.legalLink} href="/confidentialite">
+              Confidentialité
+            </Link>
+          </nav>
+        </div>
       </div>
     </footer>
   );

@@ -1,8 +1,10 @@
+import type { Viewport } from "next";
 import type { ReactNode } from "react";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs/Breadcrumbs";
 import { Footer } from "@/components/Footer/Footer";
 import { Header } from "@/components/Header/Header";
+import { JsonLd } from "@/components/Seo/JsonLd";
 import { ScrollToTopOnRoute } from "@/components/ScrollToTopOnRoute/ScrollToTopOnRoute";
 import { SmoothScroll } from "@/components/SmoothScroll/SmoothScroll";
 import { pirulen, supreme } from "@/fonts";
@@ -12,6 +14,10 @@ import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 export const metadata = defaultMetadata;
+
+export const viewport: Viewport = {
+  themeColor: "#080c0d",
+};
 
 type RootLayoutProps = {
   children: ReactNode;
@@ -24,6 +30,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       className={`${supreme.variable} ${pirulen.variable}`}
     >
       <body>
+        <JsonLd />
         <SmoothScroll />
         <ScrollToTopOnRoute />
         <a className="skip-link" href="#contenu">
