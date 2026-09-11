@@ -1,10 +1,10 @@
 import { StudioPageContent } from "@/app/le-studio/StudioPageContent";
 import { createPageMetadata } from "@/lib/metadata";
-import { siteConfig } from "@/lib/site";
 
 export const metadata = createPageMetadata({
   title: "Le studio",
-  description: `Découvrez ${siteConfig.name}, studio créatif basé à ${siteConfig.location.city} : approche, méthode et accompagnement pour entrepreneurs et indépendants.`,
+  description:
+    "Un studio indépendant à Bordeaux pour les petites entreprises et auto-entrepreneurs — identité visuelle, design et sites web sur mesure.",
   path: "/le-studio",
 });
 

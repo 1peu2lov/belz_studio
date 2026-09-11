@@ -1,4 +1,6 @@
+import { cacolacProject } from "@/data/projects/cacolac";
 import { poesieDeLameProject } from "@/data/projects/poesie-de-lame";
+import { tournisProject } from "@/data/projects/tournis";
 import type {
   Project,
   ProjectMetaField,
@@ -28,6 +30,8 @@ export const projectTagLabels: Record<ProjectTag, string> = {
 
 export const projects: Project[] = [
   poesieDeLameProject,
+  cacolacProject,
+  tournisProject,
   {
     slug: "atelier-nord",
     title: "Atelier Nord",

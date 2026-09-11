@@ -41,17 +41,11 @@
   will-change: transform, opacity;
 }
 
-.button {
+.inner .cta {
   margin-top: var(--space-sm);
-  background: #ffffff;
-  color: #04161d;
 }
 
-.button:hover:not(:disabled) {
-  background: color-mix(in srgb, #ffffff 90%, #04161d);
-}
-
-.button:focus-visible {
+.inner .cta:focus-visible {
   outline-color: #ffffff;
 }
 

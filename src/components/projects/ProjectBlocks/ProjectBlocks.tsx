@@ -54,6 +54,7 @@ export function ProjectFullBleed({
             fill
             priority={priority}
             sizes="100vw"
+            unoptimized={media.src.toLowerCase().endsWith(".svg")}
             className={cn(
               styles.mediaCover,
               fit === "contain" && styles.mediaContain,
@@ -139,9 +140,15 @@ type GridProps = {
   title?: string;
   body?: string;
   media: ProjectMedia[];
+  variant?: "default" | "products";
 };
 
-export function ProjectMediaGrid({ title, body, media }: GridProps) {
+export function ProjectMediaGrid({
+  title,
+  body,
+  media,
+  variant = "default",
+}: GridProps) {
   if (media.length === 0) {
     return null;
   }
@@ -154,21 +161,43 @@ export function ProjectMediaGrid({ title, body, media }: GridProps) {
           {body ? <p className={styles.body}>{body}</p> : null}
         </div>
       )}
-      <div className={styles.grid}>
+      <div
+        className={cn(
+          styles.grid,
+          variant === "products" && styles.gridProducts,
+        )}
+      >
         {media.map((item) => (
-          <figure key={item.src} className={styles.gridItem}>
-            <div className={styles.gridFrame}>
+          <figure
+            key={item.src}
+            className={cn(
+              styles.gridItem,
+              variant === "products" && styles.gridItemProduct,
+            )}
+          >
+            {variant === "products" ? (
               <Image
                 src={item.src}
                 alt={item.alt}
-                fill
-                sizes="(max-width: 48rem) 100vw, 33vw"
-                className={cn(
-                  styles.mediaCover,
-                  item.fit === "contain" && styles.mediaContain,
-                )}
+                width={480}
+                height={1200}
+                sizes="(max-width: 47.9375rem) 40vw, 12vw"
+                className={styles.productImage}
               />
-            </div>
+            ) : (
+              <div className={styles.gridFrame}>
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  sizes="(max-width: 48rem) 100vw, 33vw"
+                  className={cn(
+                    styles.mediaCover,
+                    item.fit === "contain" && styles.mediaContain,
+                  )}
+                />
+              </div>
+            )}
           </figure>
         ))}
       </div>

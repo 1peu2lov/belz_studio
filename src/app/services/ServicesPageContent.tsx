@@ -7,6 +7,7 @@ import {
   serviceDomains,
   serviceFormulas,
   serviceProcess,
+  servicesPage,
 } from "@/data/services";
 import { createScrollReveal } from "@/lib/scrollReveal";
 
@@ -84,12 +85,9 @@ export function ServicesPageContent() {
       <div className={styles.container}>
         <header className={styles.hero} ref={heroRef}>
           <h1 id="services-title" className={styles.title}>
-            Services
+            {servicesPage.title}
           </h1>
-          <p className={styles.lead}>
-            Des solutions simples et pro pour les petites entreprises et
-            auto-entrepreneurs — sans usine à gaz.
-          </p>
+          <p className={styles.lead}>{servicesPage.lead}</p>
         </header>
 
         <section
@@ -99,7 +97,7 @@ export function ServicesPageContent() {
         >
           <div className={styles.blockHead}>
             <h2 id="domains-title" className={styles.blockTitle}>
-              Là où je peux t’aider concrètement.
+              {servicesPage.domainsTitle}
             </h2>
           </div>
 
@@ -120,11 +118,9 @@ export function ServicesPageContent() {
         >
           <div className={styles.blockHead}>
             <h2 id="formulas-title" className={styles.blockTitle}>
-              Formules
+              {servicesPage.formulasTitle}
             </h2>
-            <p className={styles.blockLead}>
-              Des packs clairs. Les tarifs seront précisés bientôt.
-            </p>
+            <p className={styles.blockLead}>{servicesPage.formulasLead}</p>
           </div>
 
           <ul className={styles.formulaGrid} ref={formulasListRef}>
@@ -152,11 +148,8 @@ export function ServicesPageContent() {
         >
           <div className={styles.blockHead}>
             <h2 id="process-title" className={styles.blockTitle}>
-              Comment je procède
+              {servicesPage.processTitle}
             </h2>
-            <p className={styles.blockLead}>
-              Une méthode courte, lisible, faite pour avancer.
-            </p>
           </div>
 
           <ol className={styles.processList} ref={processListRef}>

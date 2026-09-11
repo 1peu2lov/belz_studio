@@ -28,6 +28,8 @@ export type ProjectCardMedia = {
 export type ProjectMetaField = {
   label: string;
   value: string;
+  /** Lien optionnel (ex. profil Instagram collaborateur). */
+  href?: string;
 };
 
 export type ProjectSection =
@@ -68,6 +70,8 @@ export type ProjectSection =
       title?: string;
       body?: string;
       media: ProjectMedia[];
+      /** `products` : 2 colonnes mobile, 4 desktop (ex. canettes). */
+      variant?: "default" | "products";
     }
   | {
       type: "video";

@@ -2,9 +2,9 @@ export const founderIntro = {
   eyebrow: "Le fondateur",
   title: "Pourquoi j’ai créé Belz Studio",
   paragraphs: [
-    "Je suis designer et développeur. J’ai lancé Belz Studio pour une raison simple : les petites entreprises et auto-entrepreneurs méritent un site propre, moderne et clair — sans le prix ni la complexité d’une grosse agence.",
-    "Trop souvent, on propose des solutions surdimensionnées à des structures qui ont surtout besoin d’être visibles, crédibles et efficaces. Belz Studio, c’est l’inverse : des offres simples (comme un site vitrine), une direction jeune et pro, et des tarifs pensés pour ta réalité.",
-    "Basé à Bordeaux, je travaille aussi à distance. L’idée : t’accompagner franchement, livrer quelque chose de soigné, et te laisser un outil digital qui sert vraiment ton activité.",
+    "Je suis Freddy, développeur web et directeur artistique indépendant. J’ai créé Belz Studio avec une idée en tête : une petite entreprise peut avoir une grande personnalité, et ça doit se voir.",
+    "Les indépendants et les petites entreprises portent des projets qui méritent d’être connus. Mon envie, c’est de leur donner les moyens de se démarquer, avec une identité qui leur ressemble et un site qui donne envie de découvrir ce qu’ils font. Belz Studio, c’est là que je réunis le design et le développement pour donner forme à ces ambitions. Des projets pensés ensemble, adaptés à tes moyens et à ce que tu veux construire.",
+    "Basé à Bordeaux, je t’accompagne ici ou à distance, avec la même envie : créer quelque chose dont tu seras fier et qui aidera ton activité à grandir."
   ],
   highlights: [
     {

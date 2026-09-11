@@ -64,7 +64,11 @@ function renderSection(project: Project, section: ProjectSection, index: number)
             </h1>
             <p className={styles.presentation}>{section.presentation}</p>
           </div>
-          <ProjectFullBleed media={section.visual} priority />
+          <ProjectFullBleed
+            media={section.visual}
+            priority
+            fit={section.visual.fit}
+          />
         </header>
       );
 
@@ -84,7 +88,19 @@ function renderSection(project: Project, section: ProjectSection, index: number)
             {fields.map((field) => (
               <div key={field.label} className={styles.metaRow}>
                 <dt className={styles.metaLabel}>{field.label}</dt>
-                <dd className={styles.metaValue}>{field.value}</dd>
+                <dd className={styles.metaValue}>
+                  {field.href ? (
+                    <a
+                      href={field.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {field.value}
+                    </a>
+                  ) : (
+                    field.value
+                  )}
+                </dd>
               </div>
             ))}
           </dl>
@@ -141,6 +157,7 @@ function renderSection(project: Project, section: ProjectSection, index: number)
           title={section.title}
           body={section.body}
           media={section.media}
+          variant={section.variant}
         />
       );
 

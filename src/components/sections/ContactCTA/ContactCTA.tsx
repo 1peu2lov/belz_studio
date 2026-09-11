@@ -81,7 +81,7 @@ export function ContactCTA({
         </h2>
 
         <div ref={buttonRef}>
-          <Button href={href} className={styles.button}>
+          <Button href={href} className={styles.cta}>
             {buttonLabel}
           </Button>
         </div>

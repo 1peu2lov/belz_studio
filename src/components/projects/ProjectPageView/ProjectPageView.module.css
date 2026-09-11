@@ -104,6 +104,18 @@
   color: #f9f9f9;
 }
 
+.metaValue a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in srgb, #f9f9f9 40%, transparent);
+  transition: text-decoration-color 0.2s ease;
+}
+
+.metaValue a:hover {
+  text-decoration-color: #f9f9f9;
+}
+
 .splitText {
   display: grid;
   gap: var(--space-md);
@@ -166,15 +178,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-md);
-}
-
-.siteButton {
-  background: #ffffff;
-  color: #04161d;
-}
-
-.siteButton:hover:not(:disabled) {
-  background: color-mix(in srgb, #ffffff 90%, #04161d);
 }
 
 .siteButton:focus-visible {

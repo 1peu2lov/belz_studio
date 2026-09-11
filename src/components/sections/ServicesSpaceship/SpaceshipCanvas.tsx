@@ -18,7 +18,7 @@ export function SpaceshipCanvas({ active, reducedMotion }: SpaceshipCanvasProps)
     <Canvas
       dpr={[1, 1.5]}
       frameloop={active ? "always" : "demand"}
-      camera={{ position: [0, 0.15, 20], fov: 38, near: 0.1, far:100}}
+      camera={{ position: [0, 0.15, 12], fov: 38, near: 0.1, far: 200 }}
       gl={{
         alpha: true,
         antialias: true,

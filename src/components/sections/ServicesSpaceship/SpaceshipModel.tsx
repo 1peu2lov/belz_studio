@@ -1,16 +1,83 @@
 "use client";
 
-import { useLayoutEffect, useMemo, useRef, useEffect } from "react";
-import { useFrame } from "@react-three/fiber";
+import {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  type RefObject,
+} from "react";
+import { useFrame, useThree } from "@react-three/fiber";
 import { Center, useAnimations, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
 export const SPACESHIP_MODEL_URL = "/models/intergalactic-spaceship.gltf";
 
+/** Taille monde stable — la distance caméra s’adapte au canvas. */
+const SHIP_WORLD_SIZE = 2.6;
+
 type SpaceshipModelProps = {
   active: boolean;
   reducedMotion: boolean;
 };
+
+/**
+ * Perspective : sans recalcul, le cadrage change avec la taille / le ratio
+ * du canvas (et avec les anciens scales mobile/tablette).
+ */
+function FitPerspectiveToShip({
+  targetRef,
+  fill = 0.62,
+}: {
+  targetRef: RefObject<THREE.Object3D | null>;
+  fill?: number;
+}) {
+  const size = useThree((state) => state.size);
+  const camera = useThree((state) => state.camera);
+  const invalidate = useThree((state) => state.invalidate);
+
+  useLayoutEffect(() => {
+    const fit = () => {
+      const target = targetRef.current;
+      if (!target || !(camera instanceof THREE.PerspectiveCamera)) {
+        return;
+      }
+
+      if (size.width <= 1 || size.height <= 1) {
+        return;
+      }
+
+      target.updateWorldMatrix(true, true);
+      const box = new THREE.Box3().setFromObject(target);
+      if (box.isEmpty()) {
+        return;
+      }
+
+      const sphere = box.getBoundingSphere(new THREE.Sphere());
+      const radius = Math.max(sphere.radius, 0.001);
+      const aspect = size.width / size.height;
+      const vFov = THREE.MathUtils.degToRad(camera.fov);
+      const hFov = 2 * Math.atan(Math.tan(vFov / 2) * aspect);
+
+      const distV = radius / (Math.tan(vFov / 2) * fill);
+      const distH = radius / (Math.tan(hFov / 2) * fill);
+      const distance = Math.max(distV, distH);
+
+      camera.position.set(0, 0.15, distance);
+      camera.near = Math.max(0.1, distance / 100);
+      camera.far = Math.max(100, distance * 12);
+      camera.lookAt(0, 0, 0);
+      camera.updateProjectionMatrix();
+      invalidate();
+    };
+
+    fit();
+    const frame = requestAnimationFrame(fit);
+    return () => cancelAnimationFrame(frame);
+  }, [camera, fill, invalidate, size.height, size.width, targetRef]);
+
+  return null;
+}
 
 export function SpaceshipModel({ active, reducedMotion }: SpaceshipModelProps) {
   const rootRef = useRef<THREE.Group>(null);
@@ -19,17 +86,15 @@ export function SpaceshipModel({ active, reducedMotion }: SpaceshipModelProps) {
   const modelRef = useRef<THREE.Group>(null);
 
   const { scene, animations } = useGLTF(SPACESHIP_MODEL_URL);
-  const clonedScene = useMemo(() => scene.clone(true), [scene]);
+  const clonedScene = useMemo(() => {
+    const clone = scene.clone(true);
+    const box = new THREE.Box3().setFromObject(clone);
+    const dims = box.getSize(new THREE.Vector3());
+    const maxDim = Math.max(dims.x, dims.y, dims.z) || 1;
+    clone.scale.setScalar(SHIP_WORLD_SIZE / maxDim);
+    return clone;
+  }, [scene]);
   const { actions } = useAnimations(animations, modelRef);
-
-  useLayoutEffect(() => {
-    const box = new THREE.Box3().setFromObject(clonedScene);
-    const size = box.getSize(new THREE.Vector3());
-    const maxDim = Math.max(size.x, size.y, size.z) || 1;
-    // Normalise la taille pour un cadrage caméra ~z=5 / fov 38
-    const targetSize = 2.35;
-    clonedScene.scale.setScalar(targetSize / maxDim);
-  }, [clonedScene]);
 
   useEffect(() => {
     const action = actions.Animation;
@@ -108,16 +173,19 @@ export function SpaceshipModel({ active, reducedMotion }: SpaceshipModelProps) {
   });
 
   return (
-    <group ref={rootRef}>
-      <group ref={pointerRef}>
-        <group ref={floatRef}>
-          <Center cacheKey={SPACESHIP_MODEL_URL}>
-            <group ref={modelRef}>
-              <primitive object={clonedScene} />
-            </group>
-          </Center>
+    <>
+      <FitPerspectiveToShip targetRef={rootRef} />
+      <group ref={rootRef}>
+        <group ref={pointerRef}>
+          <group ref={floatRef}>
+            <Center cacheKey={`${SPACESHIP_MODEL_URL}-fit`}>
+              <group ref={modelRef}>
+                <primitive object={clonedScene} />
+              </group>
+            </Center>
+          </group>
         </group>
       </group>
-    </group>
+    </>
   );
 }

@@ -174,8 +174,34 @@
   }
 }
 
+/* Canettes / produits : 2×2 mobile, 4 en ligne desktop */
+.gridProducts {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
+  align-items: end;
+  justify-items: center;
+  max-width: 52rem;
+  margin-inline: auto;
+  width: 100%;
+}
+
+@media (min-width: 48rem) {
+  .gridProducts {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-lg);
+    max-width: 45rem;
+  }
+}
+
 .gridItem {
   margin: 0;
+  width: 100%;
+}
+
+.gridItemProduct {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .gridFrame {
@@ -184,6 +210,21 @@
   overflow: hidden;
   border-radius: var(--border-radius);
   background: transparent;
+}
+
+.productImage {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 18rem;
+  object-fit: contain;
+}
+
+@media (min-width: 48rem) {
+  .productImage {
+    max-height: 22rem;
+  }
 }
 
 .videoSection {

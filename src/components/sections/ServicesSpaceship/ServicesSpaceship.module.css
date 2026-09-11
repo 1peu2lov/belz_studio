@@ -67,12 +67,6 @@
 
 .cta {
   margin-top: var(--space-sm);
-  background: #ffffff;
-  color: #04161d;
-}
-
-.cta:hover:not(:disabled) {
-  background: color-mix(in srgb, #ffffff 90%, #04161d);
 }
 
 .cta:focus-visible {
@@ -139,6 +133,12 @@
   color: color-mix(in srgb, #f9f9f9 32%, transparent);
 }
 
+@media (max-width: 64rem) {
+  .scene {
+    left: 18%;
+  }
+}
+
 @media (max-width: 47.9375rem) {
   .section {
     min-height: auto;
@@ -167,8 +167,8 @@
     inset: auto;
     left: auto;
     width: 100%;
-    min-height: 24rem;
-    height: 24rem;
+    min-height: clamp(28rem, 58svh, 36rem);
+    height: clamp(28rem, 58svh, 36rem);
     order: 2;
   }
 }

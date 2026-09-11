@@ -31,26 +31,27 @@
   opacity: 0.5;
 }
 
+/* Site sombre : primary = bouton blanc (pas les tokens light :root). */
 .primary {
-  background: var(--color-foreground);
-  color: var(--color-background);
+  background: #ffffff;
+  color: #04161d;
 }
 
 .primary:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--color-foreground) 88%, #ffffff);
+  background: color-mix(in srgb, #ffffff 90%, #04161d);
 }
 
 .primary:focus-visible {
-  outline-color: var(--color-foreground);
+  outline-color: #ffffff;
 }
 
 .secondary {
   background: transparent;
-  color: var(--color-foreground);
-  border-color: var(--color-border);
+  color: #ffffff;
+  border-color: color-mix(in srgb, #ffffff 40%, transparent);
 }
 
 .secondary:hover:not(:disabled) {
-  border-color: var(--color-muted);
-  background: color-mix(in srgb, var(--color-foreground) 6%, transparent);
+  border-color: #ffffff;
+  background: color-mix(in srgb, #ffffff 10%, transparent);
 }

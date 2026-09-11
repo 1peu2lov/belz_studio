@@ -116,24 +116,12 @@
   gap: var(--space-sm);
 }
 
-.actions .ctaPrimary {
-  background: #ffffff;
-  color: #04161d;
+.actions .ctaPrimary:focus-visible {
+  outline-color: #ffffff;
 }
 
-.actions .ctaPrimary:hover:not(:disabled) {
-  background: color-mix(in srgb, #ffffff 90%, #04161d);
-}
-
-.actions .ctaSecondary {
-  color: #ffffff;
-  border-color: color-mix(in srgb, #ffffff 40%, transparent);
-  background: color-mix(in srgb, #04161d 30%, transparent);
-}
-
-.actions .ctaSecondary:hover:not(:disabled) {
-  border-color: #ffffff;
-  background: color-mix(in srgb, #ffffff 10%, transparent);
+.actions .ctaSecondary:focus-visible {
+  outline-color: #ffffff;
 }
 
 .reveal,

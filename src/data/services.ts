@@ -7,41 +7,42 @@ export type ServiceItem = {
 /** Liste courte pour la home (hover showcase). */
 export const services: ServiceItem[] = [
   {
+    id: "sites-web",
+    label: "Sites web sur mesure",
+    tone: "ember",
+  },
+  {
+    id: "web-design",
+    label: "Web design",
+    tone: "mist",
+  },
+  {
     id: "identite-visuelle",
     label: "Identité visuelle",
     tone: "petrol",
   },
   {
-    id: "strategie-de-marque",
-    label: "Stratégie de marque",
-    tone: "deep",
-  },
-  {
-    id: "design-ui",
-    label: "Design UI",
-    tone: "mist",
-  },
-  {
-    id: "sites-web",
-    label: "Sites web",
-    tone: "ember",
-  },
-  {
-    id: "direction-artistique",
-    label: "Direction artistique",
+    id: "supports-communication",
+    label: "Supports de communication",
     tone: "slate",
   },
   {
-    id: "contenu-digital",
-    label: "Contenu digital",
-    tone: "grove",
-  },
-  {
-    id: "accompagnement",
-    label: "Accompagnement",
+    id: "maintenance-accompagnement",
+    label: "Maintenance & accompagnement",
     tone: "ink",
   },
 ];
+
+export const servicesPage = {
+  title: "Services",
+  lead:
+    "Du premier logo à la mise en ligne, je t’aide à donner forme à ton projet. Du design et du développement web pour les petites entreprises et les auto-entrepreneurs qui veulent affirmer leur présence.",
+  domainsTitle: "Ton savoir-faire mérite de se voir.",
+  formulasTitle: "À chaque projet, son point de départ.",
+  formulasLead:
+    "Tu lances ton activité, tu repenses ton image ou tu souhaites améliorer l’existant ? Voici trois façons de travailler ensemble. Chaque projet est chiffré sur devis, après un premier échange sur tes besoins et ton budget.",
+  processTitle: "De l’idée à la mise en ligne.",
+} as const;
 
 export type ServiceDomain = {
   id: string;
@@ -52,34 +53,34 @@ export type ServiceDomain = {
 /** Domaines présentés sur la page Services. */
 export const serviceDomains: ServiceDomain[] = [
   {
-    id: "sites-vitrine",
-    label: "Sites vitrine",
+    id: "sites-web",
+    label: "Sites web sur mesure",
     description:
-      "Des sites clairs, rapides et soignés pour présenter ton activité sans superflu.",
+      "Un site qui donne envie de découvrir ton activité et facilite la prise de contact. Je conçois et développe ton site autour de ton contenu, de ton identité et des besoins de tes visiteurs, sur ordinateur comme sur mobile.",
   },
   {
     id: "web-design",
     label: "Web design",
     description:
-      "Interfaces nettes, hiérarchie lisible, expérience pensée pour tes clients.",
+      "Donner du caractère à ton site tout en rendant la navigation naturelle. Je travaille les maquettes, l’organisation des contenus et les interactions pour que tes visiteurs trouvent facilement ce qu’ils cherchent.",
   },
   {
     id: "identite-visuelle",
     label: "Identité visuelle",
     description:
-      "Logo, couleurs, typo et bases de marque pour être crédible dès le premier regard.",
+      "Mettre une image sur ce qui rend ton projet unique. Logo, couleurs, typographies : je crée un univers visuel que tu peux t’approprier et faire vivre sur tous tes supports.",
   },
   {
-    id: "direction-artistique",
-    label: "Direction artistique",
+    id: "supports-communication",
+    label: "Supports de communication",
     description:
-      "Une ligne visuelle cohérente pour ton site, tes supports et ta communication.",
+      "Prolonger ton univers au-delà du site. Templates Instagram, cartes de visite, flyers ou visuels numériques : des supports cohérents avec ton identité, pensés pour tes usages au quotidien.",
   },
   {
-    id: "accompagnement",
-    label: "Accompagnement",
+    id: "maintenance-accompagnement",
+    label: "Maintenance & accompagnement",
     description:
-      "Conseils concrets pour avancer vite, sans jargon ni process d’agence lourds.",
+      "Un projet continue de vivre après sa mise en ligne. Je peux t’aider à entretenir ton site, faire évoluer ses contenus ou ajouter de nouvelles pages selon tes besoins.",
   },
 ];
 
@@ -91,45 +92,48 @@ export type ServiceFormula = {
   includes: string[];
 };
 
-/** Formules — détails et tarifs à préciser plus tard. */
+/** Formules — chaque projet est chiffré sur devis. */
 export const serviceFormulas: ServiceFormula[] = [
   {
-    id: "vitrine",
-    name: "Site vitrine",
+    id: "activite-en-ligne",
+    name: "Ton activité en ligne",
     summary:
-      "L’offre phare pour démarrer : un site simple, pro et efficace.",
-    priceLabel: "Tarif à venir",
+      "Pour présenter ce que tu fais, valoriser ton savoir-faire et permettre à tes futurs clients de te contacter.",
+    priceLabel: "Site vitrine · Sur devis",
     includes: [
-      "Structure & maquettes",
-      "Intégration responsive",
-      "Mise en ligne",
-      "Bases SEO",
+      "Organisation des pages et des contenus",
+      "Maquettes personnalisées",
+      "Développement adapté aux mobiles et aux ordinateurs",
+      "Bases du référencement naturel",
+      "Mise en ligne et prise en main",
     ],
   },
   {
-    id: "identite-site",
-    name: "Identité + site",
+    id: "univers-a-toi",
+    name: "Un univers à toi",
     summary:
-      "Marque et présence web alignées, pour une image cohérente de bout en bout.",
-    priceLabel: "Tarif à venir",
+      "Pour lancer ton projet ou lui donner un nouveau départ, avec une identité reconnaissable et un site qui la prolonge.",
+    priceLabel: "Identité visuelle + site · Sur devis",
     includes: [
-      "Identité de base",
-      "Site vitrine",
-      "Déclinaisons clés",
-      "Livrables prêts à l’emploi",
+      "Création du logo et de ses déclinaisons",
+      "Palette de couleurs et sélection typographique",
+      "Guide d’utilisation de ton identité",
+      "Conception et développement du site vitrine",
+      "Fichiers prêts à utiliser pour ta communication",
     ],
   },
   {
-    id: "accompagnement",
-    name: "Accompagnement",
+    id: "suite-projet",
+    name: "La suite de ton projet",
     summary:
-      "Un suivi ponctuel ou régulier pour t’aider à décider et avancer.",
-    priceLabel: "Tarif à venir",
+      "Pour garder ton site à jour et faire évoluer ta communication au rythme de ton activité. Une intervention ponctuelle ou un suivi régulier, selon ce dont tu as besoin.",
+    priceLabel: "Maintenance & accompagnement · Sur devis",
     includes: [
-      "Sessions conseil",
-      "Relectures & retours",
-      "Priorisation claire",
-      "Recommandations actionnables",
+      "Maintenance technique du site selon son environnement",
+      "Mise à jour des contenus et des visuels",
+      "Ajout de pages ou de fonctionnalités sur devis",
+      "Création de supports et de templates pour les réseaux sociaux",
+      "Conseils pour préparer les prochaines évolutions",
     ],
   },
 ];
@@ -143,26 +147,26 @@ export type ServiceProcessStep = {
 export const serviceProcess: ServiceProcessStep[] = [
   {
     step: 1,
-    title: "Échange",
+    title: "On parle de ton projet",
     description:
-      "On clarifie ton besoin, ta cible et ton budget. Court, franc, sans formulaire à rallonge.",
+      "Tu me présentes ton activité, tes envies et ce que tu aimerais améliorer. On définit ensemble les priorités, le budget et les contours du projet.",
   },
   {
     step: 2,
-    title: "Direction",
+    title: "Je donne forme aux idées",
     description:
-      "Je pose une direction visuelle et une structure. Tu valides avant qu’on construise.",
+      "Je te propose une direction visuelle et, pour un site, une organisation des pages. On échange sur ces premières pistes pour valider les bases avant d’aller plus loin.",
   },
   {
     step: 3,
-    title: "Conception",
+    title: "Le projet prend vie",
     description:
-      "Design puis intégration. On itère sur l’essentiel, pas sur 40 versions inutiles.",
+      "Je crée les supports ou développe le site à partir de la direction validée. Tu suis les avancées et on prévoit des temps de retour pour affiner le résultat ensemble.",
   },
   {
     step: 4,
-    title: "Livraison",
+    title: "À toi de le faire vivre",
     description:
-      "Mise en ligne, prises en main, et un site prêt à servir ton activité.",
+      "Je te remets les fichiers, mets ton site en ligne et t’explique comment utiliser ce qui a été prévu pour toi. On peut ensuite poursuivre avec un accompagnement adapté à tes besoins.",
   },
 ];

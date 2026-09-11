@@ -26,10 +26,9 @@
 }
 
 .hero > *,
-.manifesto > *,
+.manifestoCopy > *,
 .blockHead,
-.principleRow,
-.locality > * {
+.principleRow {
   will-change: transform, opacity;
 }
 
@@ -54,7 +53,14 @@
 .manifesto {
   display: grid;
   gap: var(--space-xl);
-  max-width: 52rem;
+  align-items: center;
+}
+
+@media (min-width: 48rem) {
+  .manifesto {
+    grid-template-columns: minmax(0, 1.05fr) minmax(16rem, 0.95fr);
+    gap: clamp(var(--space-xl), 4vw, var(--space-3xl));
+  }
 }
 
 .manifestoTitle {
@@ -70,6 +76,7 @@
 .manifestoCopy {
   display: grid;
   gap: var(--space-md);
+  min-width: 0;
 }
 
 .manifestoCopy p {
@@ -78,6 +85,23 @@
   font-size: clamp(1.05rem, 1rem + 0.35vw, 1.25rem);
   line-height: var(--line-height-normal);
   color: color-mix(in srgb, #f9f9f9 72%, transparent);
+}
+
+.manifestoScene {
+  min-width: 0;
+  min-height: clamp(22rem, 52vw, 34rem);
+  align-self: stretch;
+}
+
+@media (max-width: 47.9375rem) {
+  .manifestoScene {
+    order: 2;
+    min-height: clamp(20rem, 78vw, 28rem);
+  }
+
+  .manifestoCopy {
+    order: 1;
+  }
 }
 
 .block {
@@ -132,30 +156,6 @@
 }
 
 .principleCopy {
-  margin: 0;
-  font-family: var(--font-primary);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-normal);
-  color: color-mix(in srgb, #f9f9f9 62%, transparent);
-}
-
-.locality {
-  display: grid;
-  gap: var(--space-md);
-  max-width: 40rem;
-  padding-block: var(--space-md);
-}
-
-.localityTitle {
-  margin: 0;
-  font-family: var(--font-primary);
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--letter-spacing-tight);
-  color: #f9f9f9;
-}
-
-.localityCopy {
   margin: 0;
   font-family: var(--font-primary);
   font-size: var(--font-size-base);

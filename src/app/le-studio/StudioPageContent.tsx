@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 
 import { ContactCTA } from "@/components/sections/ContactCTA/ContactCTA";
 import { FounderIntro } from "@/components/sections/FounderIntro/FounderIntro";
+import { StudioRoom } from "@/components/sections/StudioRoom/StudioRoom";
 import { studioPage } from "@/data/studio";
 import { createScrollReveal } from "@/lib/scrollReveal";
 
@@ -33,8 +34,8 @@ function revealSection(
 export function StudioPageContent() {
   const heroRef = useRef<HTMLElement>(null);
   const manifestoRef = useRef<HTMLElement>(null);
+  const manifestoCopyRef = useRef<HTMLDivElement>(null);
   const principlesRef = useRef<HTMLElement>(null);
-  const localityRef = useRef<HTMLElement>(null);
   const principlesListRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
@@ -43,12 +44,11 @@ export function StudioPageContent() {
         heroRef.current,
         heroRef.current ? Array.from(heroRef.current.children) : [],
       ),
-      revealSection(
-        manifestoRef.current,
-        manifestoRef.current
-          ? Array.from(manifestoRef.current.children)
-          : [],
-      ),
+      revealSection(manifestoRef.current, [
+        ...(manifestoCopyRef.current
+          ? Array.from(manifestoCopyRef.current.children)
+          : []),
+      ]),
       revealSection(principlesRef.current, [
         ...(principlesRef.current
           ? Array.from(
@@ -59,12 +59,6 @@ export function StudioPageContent() {
           ? Array.from(principlesListRef.current.children)
           : []),
       ]),
-      revealSection(
-        localityRef.current,
-        localityRef.current
-          ? Array.from(localityRef.current.children)
-          : [],
-      ),
     ];
 
     return () => {
@@ -87,13 +81,17 @@ export function StudioPageContent() {
           aria-labelledby="manifesto-title"
           ref={manifestoRef}
         >
-          <h2 id="manifesto-title" className={styles.manifestoTitle}>
-            {studioPage.manifesto.title}
-          </h2>
-          <div className={styles.manifestoCopy}>
+          <div className={styles.manifestoCopy} ref={manifestoCopyRef}>
+            <h2 id="manifesto-title" className={styles.manifestoTitle}>
+              {studioPage.manifesto.title}
+            </h2>
             {studioPage.manifesto.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
+          </div>
+
+          <div className={styles.manifestoScene}>
+            <StudioRoom />
           </div>
         </section>
 
@@ -104,7 +102,7 @@ export function StudioPageContent() {
         >
           <div className={styles.blockHead}>
             <h2 id="principles-title" className={styles.blockTitle}>
-              Ce qui guide le travail.
+              {studioPage.principlesTitle}
             </h2>
           </div>
 
@@ -116,19 +114,6 @@ export function StudioPageContent() {
               </li>
             ))}
           </ul>
-        </section>
-
-        <section
-          className={styles.locality}
-          aria-labelledby="locality-title"
-          ref={localityRef}
-        >
-          <h2 id="locality-title" className={styles.localityTitle}>
-            {studioPage.locality.title}
-          </h2>
-          <p className={styles.localityCopy}>
-            {studioPage.locality.description}
-          </p>
         </section>
       </div>
 
