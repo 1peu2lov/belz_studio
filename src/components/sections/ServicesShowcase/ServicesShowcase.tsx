@@ -1,14 +1,44 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { services } from "@/data/services";
 
 import styles from "./ServicesShowcase.module.css";
 
+const MOBILE_QUERY = "(max-width: 47.9375rem)";
+const firstServiceId = services[0]?.id ?? null;
+
+function isMobileViewport(): boolean {
+  return window.matchMedia(MOBILE_QUERY).matches;
+}
+
 export function ServicesShowcase() {
   const [activeId, setActiveId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(MOBILE_QUERY);
+
+    const syncDefault = () => {
+      if (mediaQuery.matches) {
+        setActiveId((current) => current ?? firstServiceId);
+        return;
+      }
+
+      setActiveId(null);
+    };
+
+    syncDefault();
+    mediaQuery.addEventListener("change", syncDefault);
+    return () => mediaQuery.removeEventListener("change", syncDefault);
+  }, []);
+
+  const clearIfDesktop = () => {
+    if (!isMobileViewport()) {
+      setActiveId(null);
+    }
+  };
 
   return (
     <section
@@ -61,7 +91,7 @@ export function ServicesShowcase() {
             })}
           </div>
 
-          <ul className={styles.list} onMouseLeave={() => setActiveId(null)}>
+          <ul className={styles.list} onMouseLeave={clearIfDesktop}>
             {services.map((service) => {
               const isActive = service.id === activeId;
 
@@ -74,6 +104,7 @@ export function ServicesShowcase() {
                   <button
                     type="button"
                     className={`${styles.item} ${isActive ? styles.itemActive : ""}`}
+                    onClick={() => setActiveId(service.id)}
                     onFocus={() => setActiveId(service.id)}
                     onBlur={(event) => {
                       if (
@@ -81,7 +112,7 @@ export function ServicesShowcase() {
                           .closest(`.${styles.list}`)
                           ?.contains(event.relatedTarget as Node | null)
                       ) {
-                        setActiveId(null);
+                        clearIfDesktop();
                       }
                     }}
                     aria-pressed={isActive}

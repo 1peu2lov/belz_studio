@@ -200,6 +200,12 @@
   .rowActive {
     transform: translateX(1.75rem);
   }
+
+  @media (max-width: 47.9375rem) {
+    .list:not(:has(.itemActive)) .row:first-child {
+      transform: translateX(1.75rem);
+    }
+  }
 }
 
 @media (max-width: 47.9375rem) {
@@ -211,6 +217,16 @@
     aspect-ratio: 16 / 9;
     max-width: none;
     max-height: none;
+    opacity: 1;
+  }
+
+  .media:not(:has(.mediaPanelActive)) .mediaPanel:first-child {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .list:not(:has(.itemActive)) .row:first-child .item {
+    color: #f9f9f9;
   }
 
   .item {

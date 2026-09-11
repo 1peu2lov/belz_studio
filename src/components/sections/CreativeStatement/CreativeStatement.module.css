@@ -99,13 +99,13 @@
 
 @media (max-width: 47.9375rem) {
   .section {
-    --section-offset-y: clamp(-12rem, -34vh, -8rem);
-    min-height: 70svh;
-    padding-block: calc(var(--space-2xl) + clamp(4.5rem, 14vh, 7rem)) var(--space-2xl);
+    --section-offset-y: clamp(-7rem, -20vh, -4.5rem);
+    min-height: 0;
+    padding-block: clamp(2.5rem, 7vh, 3.75rem) var(--space-xl);
   }
 
   .title {
-    font-size: clamp(1.85rem, 9.5vw, 3.25rem);
+    font-size: clamp(2.4rem, 11.8vw, 3.7rem);
     line-height: 1.02;
   }
 }

@@ -7,9 +7,10 @@ import { createScrollReveal } from "@/lib/scrollReveal";
 import styles from "./StudioAudience.module.css";
 
 const LINES = [
-  "Studio créatif pour",
-  "les petites entreprises",
-  "et auto-entrepreneurs.",
+  "Studio créatif",
+  "pour les petites",
+  "entreprises et",
+  "auto-entrepreneurs.",
 ] as const;
 
 export function StudioAudience() {

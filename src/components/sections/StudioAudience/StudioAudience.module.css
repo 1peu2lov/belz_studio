@@ -22,7 +22,7 @@
 
 .title {
   margin: 0;
-  max-width: 18ch;
+  max-width: 22ch;
   font-family: var(--font-primary);
   font-size: clamp(2.35rem, 7vw, 7.5rem);
   font-weight: var(--font-weight-bold);
@@ -33,18 +33,23 @@
 
 .line {
   display: block;
+  white-space: nowrap;
   will-change: transform, opacity;
 }
 
 @media (max-width: 47.9375rem) {
   .section {
-    min-height: 65svh;
-    padding-block: var(--space-2xl);
+    min-height: 0;
+    padding-block: clamp(4rem, 12vh, 5.75rem);
+  }
+
+  .container {
+    container-type: inline-size;
   }
 
   .title {
-    font-size: clamp(2rem, 10vw, 3.5rem);
-    line-height: 0.98;
     max-width: none;
+    font-size: clamp(1.85rem, 8.6cqi, 3.25rem);
+    line-height: 1.05;
   }
 }

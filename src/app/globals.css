@@ -67,7 +67,8 @@
 html {
   height: 100%;
   scroll-behavior: smooth;
-  color-scheme: light;
+  color-scheme: dark;
+  background: #080c0d;
 }
 
 html.lenis-smooth,
@@ -100,7 +101,7 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  background: var(--color-background);
+  background: #080c0d;
   color: var(--color-foreground);
   font-family: var(--font-primary);
   font-size: var(--font-size-base);
@@ -115,6 +116,7 @@ body {
 .main {
   position: relative;
   flex: 1 0 auto;
+  background: #080c0d;
 }
 
 /* Titres courants en Supreme ; les héros passent en Pirulen via .display-title */
