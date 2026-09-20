@@ -28,6 +28,22 @@
   touch-action: none;
 }
 
+/* iPhone / tactile : scroll natif, sans drag JS. */
+.viewport.nativeScroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  touch-action: pan-x pan-y;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: auto;
+}
+
+.viewport.nativeScroll::-webkit-scrollbar {
+  display: none;
+}
+
 .track {
   display: flex;
   align-items: stretch;
@@ -36,6 +52,10 @@
   width: max-content;
   padding-inline: var(--page-padding);
   will-change: transform;
+}
+
+.viewport.nativeScroll .track {
+  will-change: auto;
 }
 
 @media (min-width: 48rem) {

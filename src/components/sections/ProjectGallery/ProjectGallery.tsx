@@ -4,6 +4,7 @@ import {
   useCallback,
   useEffect,
   useRef,
+  useSyncExternalStore,
   type MouseEvent as ReactMouseEvent,
   type PointerEvent as ReactPointerEvent,
 } from "react";
@@ -11,12 +12,34 @@ import gsap from "gsap";
 
 import { ProjectCard } from "@/components/projects/ProjectCard/ProjectCard";
 import { projects } from "@/data/projects";
+import { cn } from "@/utils/cn";
 
 import styles from "./ProjectGallery.module.css";
 
 const DRAG_THRESHOLD_PX = 10;
+const NATIVE_SCROLL_QUERY = "(max-width: 47.9375rem), (pointer: coarse)";
+
+function subscribeNativeScroll(onStoreChange: () => void) {
+  const media = window.matchMedia(NATIVE_SCROLL_QUERY);
+  media.addEventListener("change", onStoreChange);
+  return () => media.removeEventListener("change", onStoreChange);
+}
+
+function getNativeScrollSnapshot() {
+  return window.matchMedia(NATIVE_SCROLL_QUERY).matches;
+}
+
+function getNativeScrollServerSnapshot() {
+  return true;
+}
 
 export function ProjectGallery() {
+  const nativeScroll = useSyncExternalStore(
+    subscribeNativeScroll,
+    getNativeScrollSnapshot,
+    getNativeScrollServerSnapshot,
+  );
+
   const sectionRef = useRef<HTMLElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLUListElement>(null);
@@ -65,11 +88,25 @@ export function ProjectGallery() {
 
   useEffect(() => {
     const track = trackRef.current;
-    if (!track) {
+    const viewport = viewportRef.current;
+    if (!track || !viewport) {
       return;
     }
 
-    gsap.set(track, { x: 0 });
+    if (nativeScroll) {
+      gsap.killTweensOf(track);
+      gsap.set(track, { clearProps: "transform,x" });
+      xRef.current = 0;
+      return;
+    }
+
+    const scrolled = viewport.scrollLeft;
+    if (scrolled > 0) {
+      viewport.scrollLeft = 0;
+      setX(-scrolled, true);
+    } else {
+      gsap.set(track, { x: xRef.current });
+    }
 
     const onResize = () => {
       setX(xRef.current, true);
@@ -77,7 +114,7 @@ export function ProjectGallery() {
 
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, [setX]);
+  }, [nativeScroll, setX]);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -146,6 +183,10 @@ export function ProjectGallery() {
   }, []);
 
   const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (nativeScroll) {
+      return;
+    }
+
     if (event.button !== 0 && event.pointerType === "mouse") {
       return;
     }
@@ -291,11 +332,11 @@ export function ProjectGallery() {
 
       <div
         ref={viewportRef}
-        className={styles.viewport}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerCancel}
+        className={cn(styles.viewport, nativeScroll && styles.nativeScroll)}
+        onPointerDown={nativeScroll ? undefined : onPointerDown}
+        onPointerMove={nativeScroll ? undefined : onPointerMove}
+        onPointerUp={nativeScroll ? undefined : onPointerUp}
+        onPointerCancel={nativeScroll ? undefined : onPointerCancel}
       >
         <ul ref={trackRef} className={styles.track}>
           {projects.map((project) => (
@@ -307,7 +348,9 @@ export function ProjectGallery() {
                 mediaClassName={styles.media}
                 draggable={false}
                 onClick={
-                  project.status === "teaser" ? undefined : onCardClick
+                  nativeScroll || project.status === "teaser"
+                    ? undefined
+                    : onCardClick
                 }
               />
             </li>
