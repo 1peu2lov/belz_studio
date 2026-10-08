@@ -23,7 +23,7 @@ export const poesieDeLameProject: Project = {
       src: `${DIR}/Poesie_de_lame_card.jpg`,
       alt: "Aperçu du projet Poésie de l’Âme",
     },
-    hoverVideo: `${DIR}/video_site_navigation.mp4`,
+    hoverVideo: `${DIR}/video_site_navigation.opt.mp4`,
   },
   sections: [
     {
@@ -65,7 +65,7 @@ export const poesieDeLameProject: Project = {
       title: "Identité visuelle",
       body: "L’identité repose sur un équilibre entre structure et fluidité. Les lignes droites et ondulées, les teintes douces et les choix typographiques composent un univers pensé pour relier les différentes pratiques de la marque.",
       video: {
-        src: `${DIR}/Composition 1_5.mp4`,
+        src: `${DIR}/Composition 1_5.opt.mp4`,
         poster: `${DIR}/Mockup.png`,
         alt: "Animation de l’identité visuelle Poésie de l’Âme",
         autoplay: true,
@@ -98,7 +98,7 @@ export const poesieDeLameProject: Project = {
       type: "outcome",
       title: "Le site web",
       video: {
-        src: `${DIR}/video_site_navigation.mp4`,
+        src: `${DIR}/video_site_navigation.opt.mp4`,
         poster: `${DIR}/Poesie_de_lame_card.jpg`,
         alt: "Vidéo de navigation du site Poésie de l’Âme",
       },

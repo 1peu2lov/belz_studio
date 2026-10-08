@@ -5,6 +5,7 @@ import {
   useEffect,
   useMemo,
   useRef,
+  useState,
   useSyncExternalStore,
   type MutableRefObject,
 } from "react";
@@ -342,12 +343,30 @@ export function HeroShader() {
     () => document.visibilityState === "visible",
     () => true,
   );
+  const [isActive, setIsActive] = useState(false);
 
   const sharedPointer = useRef<SharedPointer>({
     target: new Vector2(REST_X, REST_Y),
     hasPointer: false,
   });
   const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const root = containerRef.current?.closest("section");
+    if (!root || !webglOk) {
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        setIsActive(Boolean(entry?.isIntersecting));
+      },
+      { threshold: 0.15 },
+    );
+    io.observe(root);
+    return () => {
+      io.disconnect();
+    };
+  }, [webglOk]);
 
   useEffect(() => {
     const root = containerRef.current?.closest("section");
@@ -403,7 +422,7 @@ export function HeroShader() {
     };
   }, [webglOk]);
 
-  if (!mounted || !webglOk) {
+  if (!mounted || !webglOk || reducedMotion) {
     return <div ref={containerRef} className={styles.shaderWrapperInner} />;
   }
 
@@ -421,13 +440,13 @@ export function HeroShader() {
           stencil: false,
           depth: false,
         }}
-        frameloop={isVisible ? "always" : "never"}
+        frameloop={isVisible && isActive ? "always" : "never"}
         resize={{ scroll: false, debounce: { scroll: 0, resize: 0 } }}
       >
         <HeroShaderScene
           reducedMotion={reducedMotion}
           isMobile={isMobile}
-          isVisible={isVisible}
+          isVisible={isVisible && isActive}
           sharedPointer={sharedPointer}
         />
       </Canvas>

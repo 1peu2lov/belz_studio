@@ -13,6 +13,7 @@ import {
 } from "@/components/projects/ProjectBlocks/ProjectBlocks";
 import { ContactCTA } from "@/components/sections/ContactCTA/ContactCTA";
 import { Button } from "@/components/ui/Button/Button";
+import { LazyVideo } from "@/components/ui/LazyVideo/LazyVideo";
 import {
   getProjectMetaFields,
   type Project,
@@ -201,28 +202,14 @@ function renderSection(project: Project, section: ProjectSection, index: number)
             </h2>
           ) : null}
           <figure className={styles.outcomeVideo}>
-            <video
+            <LazyVideo
               className={styles.outcomePlayer}
-              src={encodePublicPath(section.video.src)}
-              poster={
-                section.video.poster
-                  ? encodePublicPath(section.video.poster)
-                  : undefined
-              }
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              controls={false}
-              disablePictureInPicture
-              disableRemotePlayback
-              aria-label={
-                section.video.alt ?? "Vidéo de navigation du projet"
-              }
-            >
-              Votre navigateur ne prend pas en charge la lecture vidéo.
-            </video>
+              src={section.video.src}
+              poster={section.video.poster}
+              alt={section.video.alt}
+              autoplay
+              ariaLabel={section.video.alt ?? "Vidéo de navigation du projet"}
+            />
           </figure>
           {section.siteUrl ? (
             <div className={styles.outcomeActions}>
