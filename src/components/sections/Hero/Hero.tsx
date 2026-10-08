@@ -1,10 +1,15 @@
+"use client";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 
 import { Button } from "@/components/ui/Button/Button";
 import { siteConfig } from "@/lib/site";
 
 import styles from "./Hero.module.css";
-import { HeroShader } from "./HeroShader";
+const HeroShader = dynamic(
+  () => import("./HeroShader").then((m) => m.HeroShader),
+  { ssr: false },
+);
 
 export function Hero() {
   return (
