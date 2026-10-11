@@ -4,7 +4,7 @@ import { createPageMetadata } from "@/lib/metadata";
 export const metadata = createPageMetadata({
   title: "Services",
   description:
-    "Du premier logo à la mise en ligne : sites web, identité visuelle et accompagnement pour petites entreprises et auto-entrepreneurs.",
+    "Offres et tarifs : sites codés à la main (Présence, Vitrine, Univers, Signature), identité visuelle, maintenance. Rapide, sans extensions, vous possédez votre site.",
   path: "/services",
 });
 

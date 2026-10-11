@@ -5,6 +5,7 @@ import { FounderIntro } from "@/components/sections/FounderIntro/FounderIntro";
 import { Hero } from "@/components/sections/Hero/Hero";
 import { ProjectGallery } from "@/components/sections/ProjectGallery/ProjectGallery";
 import { ServicesShowcase } from "@/components/sections/ServicesShowcase/ServicesShowcase";
+import { OffersTeaser } from "@/components/sections/OffersTeaser/OffersTeaser";
 import { StudioAudience } from "@/components/sections/StudioAudience/StudioAudience";
 import { createPageMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site";
@@ -28,6 +29,7 @@ export default function HomePage() {
       <ProjectGallery />
       <StudioAudience />
       <ServicesShowcase />
+      <OffersTeaser />
       <AboutShowcase />
       <FounderIntro />
       <ContactCTA />

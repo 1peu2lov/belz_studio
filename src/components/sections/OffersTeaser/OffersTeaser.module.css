@@ -1,0 +1,114 @@
+.section {
+  background: #080c0d;
+  color: #f9f9f9;
+  padding-block: clamp(var(--space-2xl), 10vh, var(--space-4xl));
+}
+
+.container {
+  width: calc(100% - (var(--page-padding) * 2));
+  margin-inline: auto;
+  display: grid;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 48rem) {
+  .container {
+    width: var(--container-width);
+  }
+}
+
+.head {
+  display: grid;
+  gap: var(--space-xs);
+  max-width: 48rem;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.lead {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  color: color-mix(in srgb, #f9f9f9 62%, transparent);
+}
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-md);
+}
+
+@media (min-width: 48rem) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+}
+
+.card {
+  display: grid;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  border: var(--border-width) solid color-mix(in srgb, #184b4b 55%, #080c0d);
+  border-radius: var(--border-radius);
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, #123e41 30%, #080c0d) 0%,
+      color-mix(in srgb, #101b1e 85%, #080c0d) 100%
+    );
+}
+
+.cardTop {
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.cardName {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.cardPrice {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: color-mix(in srgb, #bac5c6 75%, #184b4b);
+}
+
+.cardTagline {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  color: color-mix(in srgb, #f9f9f9 70%, transparent);
+}
+
+.cardCta {
+  margin-top: var(--space-sm);
+  width: 100%;
+}
+
+.notice {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  color: color-mix(in srgb, #f9f9f9 75%, transparent);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-start;
+}
+

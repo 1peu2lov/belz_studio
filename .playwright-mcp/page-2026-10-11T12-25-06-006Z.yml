@@ -1,0 +1,250 @@
+- generic [active] [ref=e1]:
+  - link "Aller au contenu" [ref=e2] [cursor=pointer]:
+    - /url: "#contenu"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Belz Studio — Accueil" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - text: Belz Studio
+      - navigation "Navigation principale" [ref=e6]:
+        - list [ref=e7]:
+          - listitem [ref=e8]:
+            - link "Projets" [ref=e9] [cursor=pointer]:
+              - /url: /projets
+              - generic [ref=e11]:
+                - generic [ref=e12]: Projets
+                - generic [ref=e13]: Projets
+          - listitem [ref=e14]:
+            - link "Services" [ref=e15] [cursor=pointer]:
+              - /url: /services
+              - generic [ref=e17]:
+                - generic [ref=e18]: Services
+                - generic [ref=e19]: Services
+          - listitem [ref=e20]:
+            - link "Le studio" [ref=e21] [cursor=pointer]:
+              - /url: /le-studio
+              - generic [ref=e23]:
+                - generic [ref=e24]: Le studio
+                - generic [ref=e25]: Le studio
+          - listitem [ref=e26]:
+            - link "Contact" [ref=e27] [cursor=pointer]:
+              - /url: /contact
+              - generic [ref=e29]:
+                - generic [ref=e30]: Contact
+                - generic [ref=e31]: Contact
+  - main [ref=e32]:
+    - region "Belz Studio — studio créatif pour entrepreneurs et indépendants" [ref=e33]:
+      - generic:
+        - generic:
+          - heading "Belz Studio — studio créatif pour entrepreneurs et indépendants" [level=1]
+          - generic:
+            - img "Belz Studio"
+          - generic:
+            - link "Voir les projets" [ref=e35] [cursor=pointer]:
+              - /url: /projets
+            - link "Discuter d'un projet" [ref=e36] [cursor=pointer]:
+              - /url: /contact
+    - region [ref=e37]:
+      - paragraph [ref=e38]: Belz Studio donne forme à vos idées, vos projets, vos identités et vos ambitions.
+      - heading [level=2] [aria-hidden] [ref=e40]:
+        - generic [ref=e41]: Belz Studio donne forme
+        - generic [ref=e42]:
+          - generic [ref=e43]: à vos
+          - generic [ref=e44]:
+            - generic [aria-hidden]:
+              - generic [aria-hidden]: idées.
+              - generic [aria-hidden]: idées.
+              - generic [aria-hidden]: idées.
+              - generic [aria-hidden]: idées.
+              - generic [aria-hidden]: idées.
+              - generic [aria-hidden]: idées.
+    - region [ref=e45]:
+      - heading "Projets sélectionnés" [level=2] [ref=e46]
+      - list [ref=e48]:
+        - listitem [ref=e49]:
+          - link "Poésie de l’Âme Un univers dédié au yoga, à la diététique et au bien-être. Identité visuelle · Webdesign · Développement" [ref=e50] [cursor=pointer]:
+            - /url: /projets/poesie-de-lame
+            - generic [ref=e51]:
+              - generic [ref=e52]: Poésie de l’Âme
+              - generic [ref=e53]: Un univers dédié au yoga, à la diététique et au bien-être.
+              - generic [ref=e54]: Identité visuelle · Webdesign · Développement
+        - listitem [ref=e55]:
+          - link "Cacolac Une identité packaging renouvelée pour la marque iconique du lait chocolaté. Packaging · Identité visuelle · Direction artistique" [ref=e56] [cursor=pointer]:
+            - /url: /projets/cacolac
+            - generic [ref=e57]:
+              - generic [ref=e58]: Cacolac
+              - generic [ref=e59]: Une identité packaging renouvelée pour la marque iconique du lait chocolaté.
+              - generic [ref=e60]: Packaging · Identité visuelle · Direction artistique
+        - listitem [ref=e61]:
+          - link "Tournis UX/UI et développement web pour la refonte d’une joaillerie bordelaise, en collaboration sur l’identité visuelle. UX/UI · Développement web · Identité visuelle (collab.)" [ref=e62] [cursor=pointer]:
+            - /url: /projets/tournis
+            - generic [ref=e63]:
+              - generic [ref=e64]: Tournis
+              - generic [ref=e65]: UX/UI et développement web pour la refonte d’une joaillerie bordelaise, en collaboration sur l’identité visuelle.
+              - generic [ref=e66]: UX/UI · Développement web · Identité visuelle (collab.)
+        - listitem [ref=e67]:
+          - link "En cours NADS Projet en cours. En cours" [ref=e68] [cursor=pointer]:
+            - /url: /projets/nads
+            - generic: En cours
+            - generic [ref=e69]:
+              - generic [ref=e70]: NADS
+              - generic [ref=e71]: Projet en cours.
+              - generic [ref=e72]: En cours
+        - listitem [ref=e73]:
+          - generic "Projet à venir":
+            - generic:
+              - generic [aria-hidden]: "????"
+            - generic:
+              - generic: "????"
+              - generic: À venir
+        - listitem [ref=e74]:
+          - generic "Projet à venir":
+            - generic:
+              - generic [aria-hidden]: "????"
+            - generic:
+              - generic: "????"
+              - generic: À venir
+        - listitem [ref=e75]:
+          - generic "Projet à venir":
+            - generic:
+              - generic [aria-hidden]: "????"
+            - generic:
+              - generic: "????"
+              - generic: À venir
+        - listitem [ref=e76]:
+          - generic "Projet à venir":
+            - generic:
+              - generic [aria-hidden]: "????"
+            - generic:
+              - generic: "????"
+              - generic: À venir
+    - region [ref=e77]:
+      - heading "Studio créatif pour les petites entreprises et auto-entrepreneurs." [level=2] [ref=e79]:
+        - generic [ref=e80]: Studio créatif
+        - generic [ref=e81]: pour les petites
+        - generic [ref=e82]: entreprises et
+        - generic [ref=e83]: auto-entrepreneurs.
+    - region [ref=e84]:
+      - generic [ref=e85]:
+        - heading "Services" [level=2] [ref=e86]
+        - list [ref=e88]:
+          - listitem [ref=e89]:
+            - button "Sites web sur mesure" [ref=e90] [cursor=pointer]
+          - listitem [ref=e91]:
+            - button "Web design" [ref=e92] [cursor=pointer]
+          - listitem [ref=e93]:
+            - button "Identité visuelle" [ref=e94] [cursor=pointer]
+          - listitem [ref=e95]:
+            - button "Supports de communication" [ref=e96] [cursor=pointer]
+          - listitem [ref=e97]:
+            - button "Maintenance & accompagnement" [ref=e98] [cursor=pointer]
+    - region [ref=e99]:
+      - generic [ref=e100]:
+        - generic [ref=e101]:
+          - heading "Offres" [level=2] [ref=e102]
+          - paragraph [ref=e103]: Des forfaits clairs pour démarrer vite, sans abonnement imposé.
+        - list [ref=e104]:
+          - listitem [ref=e105]:
+            - generic [ref=e106]:
+              - heading "Présence" [level=3] [ref=e107]
+              - paragraph [ref=e108]: à partir de 1 190 € HT
+            - paragraph [ref=e109]: One‑page codée, rapide et efficace
+            - link "Découvrir" [ref=e111] [cursor=pointer]:
+              - /url: /services#formulas-title
+          - listitem [ref=e112]:
+            - generic [ref=e113]:
+              - heading "Vitrine" [level=3] [ref=e114]
+              - paragraph [ref=e115]: à partir de 2 200 € HT
+            - paragraph [ref=e116]: 4 à 6 pages sur mesure + interface d’édition
+            - link "Découvrir" [ref=e118] [cursor=pointer]:
+              - /url: /services#formulas-title
+          - listitem [ref=e119]:
+            - generic [ref=e120]:
+              - heading "Univers" [level=3] [ref=e121]
+              - paragraph [ref=e122]: à partir de 3 900 € HT
+            - paragraph [ref=e123]: Identité essentielle + site vitrine
+            - link "Découvrir" [ref=e125] [cursor=pointer]:
+              - /url: /services#formulas-title
+        - generic [ref=e126]: Offre de lancement pour les 5 premiers projets signés.
+        - link "Voir toutes les offres" [ref=e128] [cursor=pointer]:
+          - /url: /services
+    - region [ref=e129]:
+      - heading "Le studio" [level=2] [ref=e130]
+      - generic [ref=e132]:
+        - generic [ref=e133]:
+          - button "Texte précédent" [ref=e134] [cursor=pointer]
+          - button "Texte suivant" [ref=e137] [cursor=pointer]
+        - generic [ref=e140]:
+          - generic [ref=e141]:
+            - paragraph [ref=e142]: Un bon design n’a pas de date d’expiration. Il traverse les années et inspire dès le premier regard. Notre liberté créative nous permet de consacrer plus de temps à moins de projets,
+            - paragraph [ref=e143]: et de nous concentrer sur l’intelligence, la fonction et l’esthétique d’une marque. Nous cherchons des idées justes, un design durable, et de la beauté dans le quotidien.
+          - link "Le studio" [ref=e144] [cursor=pointer]:
+            - /url: /le-studio
+    - region [ref=e149]:
+      - generic [ref=e151]:
+        - generic [ref=e152]:
+          - paragraph [ref=e153]: Le fondateur
+          - heading "Pourquoi j’ai créé Belz Studio" [level=2] [ref=e154]
+          - generic [ref=e155]:
+            - paragraph [ref=e156]: "Je suis Freddy, développeur web et directeur artistique indépendant. J’ai créé Belz Studio avec une idée en tête : une petite entreprise peut avoir une grande personnalité, et ça doit se voir."
+            - paragraph [ref=e157]: Les indépendants et les petites entreprises portent des projets qui méritent d’être connus. Mon envie, c’est de leur donner les moyens de se démarquer, avec une identité qui leur ressemble et un site qui donne envie de découvrir ce qu’ils font. Belz Studio, c’est là que je réunis le design et le développement pour donner forme à ces ambitions. Des projets pensés ensemble, adaptés à tes moyens et à ce que tu veux construire.
+            - paragraph [ref=e158]: "Basé à Bordeaux, je t’accompagne ici ou à distance, avec la même envie : créer quelque chose dont tu seras fier et qui aidera ton activité à grandir."
+          - list [ref=e159]:
+            - listitem [ref=e160]:
+              - generic [ref=e161]: Expertise
+            - listitem [ref=e165]:
+              - generic [ref=e166]: Approche simple
+            - listitem [ref=e171]:
+              - generic [ref=e172]: Prix adaptés
+            - listitem [ref=e176]:
+              - generic [ref=e177]: Réactivité
+            - listitem [ref=e180]:
+              - generic [ref=e181]: Accompagnement
+            - listitem [ref=e187]:
+              - generic [ref=e188]: Qualité pro
+        - generic:
+          - img "Portrait du fondateur de Belz Studio"
+    - region [ref=e192]:
+      - generic [ref=e193]:
+        - paragraph [ref=e194]: (c'est parti.)
+        - heading "Prêt à faire décoller votre activité ?" [level=2] [ref=e195]: Prêt à faire décollervotre activité ?
+        - link "On en parle ?" [ref=e197] [cursor=pointer]:
+          - /url: /contact
+  - contentinfo [ref=e198]:
+    - generic [ref=e199]:
+      - generic [ref=e200]:
+        - paragraph [ref=e201]: Belz Studio
+        - paragraph [ref=e202]: Studio créatif à Bordeaux, aussi à distance.
+      - navigation "Navigation pied de page" [ref=e203]:
+        - list [ref=e204]:
+          - listitem [ref=e205]:
+            - link "Projets" [ref=e206] [cursor=pointer]:
+              - /url: /projets
+              - generic [ref=e208]:
+                - generic [ref=e209]: Projets
+                - generic [ref=e210]: Projets
+          - listitem [ref=e211]:
+            - link "Services" [ref=e212] [cursor=pointer]:
+              - /url: /services
+              - generic [ref=e214]:
+                - generic [ref=e215]: Services
+                - generic [ref=e216]: Services
+          - listitem [ref=e217]:
+            - link "Le studio" [ref=e218] [cursor=pointer]:
+              - /url: /le-studio
+              - generic [ref=e220]:
+                - generic [ref=e221]: Le studio
+                - generic [ref=e222]: Le studio
+          - listitem [ref=e223]:
+            - link "Contact" [ref=e224] [cursor=pointer]:
+              - /url: /contact
+              - generic [ref=e226]:
+                - generic [ref=e227]: Contact
+                - generic [ref=e228]: Contact
+      - generic [ref=e229]:
+        - paragraph [ref=e230]: © 2026 Belz Studio. Tous droits réservés.
+        - navigation "Informations légales" [ref=e231]:
+          - link "Mentions légales" [ref=e232] [cursor=pointer]:
+            - /url: /mentions-legales
+          - link "Confidentialité" [ref=e233] [cursor=pointer]:
+            - /url: /confidentialite

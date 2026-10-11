@@ -1,0 +1,236 @@
+- generic [active] [ref=f1e1]:
+  - link "Aller au contenu" [ref=f1e2] [cursor=pointer]:
+    - /url: "#contenu"
+  - banner [ref=f1e3]:
+    - generic [ref=f1e4]:
+      - link "Belz Studio — Accueil" [ref=f1e5] [cursor=pointer]:
+        - /url: /
+        - text: Belz Studio
+      - button "Ouvrir le menu" [ref=f1e6] [cursor=pointer]
+  - main [ref=f1e11]:
+    - navigation "Fil d’Ariane":
+      - list [ref=f1e12]:
+        - listitem [ref=f1e13]:
+          - link "Accueil" [ref=f1e14] [cursor=pointer]:
+            - /url: /
+            - generic [aria-hidden] [ref=f1e15]: ←
+            - text: Accueil
+        - listitem [ref=f1e16]:
+          - generic [aria-hidden] [ref=f1e17]: /
+          - generic [ref=f1e18]: Services
+    - generic [ref=f1e19]:
+      - generic [ref=f1e20]:
+        - generic [ref=f1e21]:
+          - heading "Services" [level=1] [ref=f1e22]
+          - paragraph [ref=f1e23]: Des sites codés à la main pour les indépendants et les petites entreprises. Je conçois votre identité et votre site, du premier croquis à la mise en ligne.
+        - region [ref=f1e24]:
+          - heading "Votre savoir-faire mérite de se voir." [level=2] [ref=f1e26]
+          - list [ref=f1e27]:
+            - listitem [ref=f1e28]:
+              - heading "Sites web sur mesure" [level=3] [ref=f1e29]
+              - paragraph [ref=f1e30]: Un site qui donne envie de découvrir votre activité et facilite la prise de contact. Je conçois et développe votre site autour de vos contenus, de votre identité et des besoins de vos visiteurs, sur ordinateur comme sur mobile.
+            - listitem [ref=f1e31]:
+              - heading "Web design" [level=3] [ref=f1e32]
+              - paragraph [ref=f1e33]: Donner du caractère à votre site tout en rendant la navigation naturelle. Je travaille les maquettes, l’organisation des contenus et les interactions pour que vos visiteurs trouvent facilement ce qu’ils cherchent.
+            - listitem [ref=f1e34]:
+              - heading "Identité visuelle" [level=3] [ref=f1e35]
+              - paragraph [ref=f1e36]: "Mettre une image sur ce qui rend votre projet unique. Logo, couleurs, typographies : je crée un univers visuel que vous pouvez vous approprier et faire vivre sur tous vos supports."
+            - listitem [ref=f1e37]:
+              - heading "Supports de communication" [level=3] [ref=f1e38]
+              - paragraph [ref=f1e39]: "Prolonger votre univers au‑delà du site. Templates Instagram, cartes de visite, flyers ou visuels numériques : des supports cohérents avec votre identité, pensés pour vos usages au quotidien."
+            - listitem [ref=f1e40]:
+              - heading "Maintenance & accompagnement" [level=3] [ref=f1e41]
+              - paragraph [ref=f1e42]: Un projet continue de vivre après sa mise en ligne. Je peux vous aider à entretenir votre site, faire évoluer ses contenus ou ajouter de nouvelles pages selon vos besoins.
+        - region [ref=f1e43]:
+          - generic [ref=f1e44]:
+            - heading "Offres et tarifs" [level=2] [ref=f1e45]
+            - paragraph [ref=f1e46]: Des forfaits clairs et adaptés aux TPE, avec des prix "à partir de". L’offre de lancement est réservée aux 5 premiers clients, en échange d’un témoignage et d’un avis Google.
+          - list [ref=f1e47]:
+            - listitem [ref=f1e48]:
+              - generic [ref=f1e49]:
+                - heading "Présence" [level=3] [ref=f1e50]
+                - paragraph [ref=f1e51]: "1 190 – 1 400 € HT (lancement : 990 €)"
+              - paragraph [ref=f1e52]: One‑page codée, claire et efficace pour être trouvé sur Google et réservé en un clic.
+              - list [ref=f1e53]:
+                - listitem [ref=f1e54]: Sections essentielles (horaires, tarifs, carte, avis, contact)
+                - listitem [ref=f1e55]: Intégration d’un outil de réservation (Planity, Cal.com…)
+                - listitem [ref=f1e56]: Création/optimisation de la fiche Google Business Profile
+                - listitem [ref=f1e57]: SEO local technique, mentions légales, mise en ligne
+                - listitem [ref=f1e58]: 1 série de retours + 1 ajustement final
+              - link "Demander Présence" [ref=f1e60] [cursor=pointer]:
+                - /url: /contact?offre=presence
+            - listitem [ref=f1e61]:
+              - generic [ref=f1e62]:
+                - heading "Vitrine" [level=3] [ref=f1e63]
+                - paragraph [ref=f1e64]: "2 200 – 2 800 € HT (lancement : 1 890 €)"
+              - paragraph [ref=f1e65]: 4 à 6 pages sur mesure, avec une interface simple pour mettre à jour vos contenus.
+              - list [ref=f1e66]:
+                - listitem [ref=f1e67]: Maquette personnalisée (1 direction, 2 séries de retours)
+                - listitem [ref=f1e68]: 4 à 6 pages (services/tarifs, à propos, réalisations, contact…)
+                - listitem [ref=f1e69]: Interface d’édition (horaires, tarifs, actus, galerie)
+                - listitem [ref=f1e70]: 1 h de formation, SEO local par page
+              - link "Demander Vitrine" [ref=f1e72] [cursor=pointer]:
+                - /url: /contact?offre=vitrine
+            - listitem [ref=f1e73]:
+              - generic [ref=f1e74]:
+                - heading "Univers" [level=3] [ref=f1e75]
+                - paragraph [ref=f1e76]: "3 900 – 4 800 € HT (lancement : 3 400 €)"
+              - paragraph [ref=f1e77]: Identité visuelle essentielle + Vitrine, avec 5 templates Instagram et une carte de visite.
+              - list [ref=f1e78]:
+                - listitem [ref=f1e79]: Logo + variantes, palette, typos, mini‑guide PDF
+                - listitem [ref=f1e80]: Site Vitrine (cf. ci‑dessus)
+                - listitem [ref=f1e81]: 5 templates Instagram et carte de visite (fichiers prêts à imprimer)
+              - link "Demander Univers" [ref=f1e83] [cursor=pointer]:
+                - /url: /contact?offre=univers
+            - listitem [ref=f1e84]:
+              - generic [ref=f1e85]:
+                - heading "Signature" [level=3] [ref=f1e86]
+                - paragraph [ref=f1e87]: À partir de 6 000 € HT
+              - paragraph [ref=f1e88]: "Sur‑mesure créatif : direction artistique poussée, motion, 3D/WebGL, vidéo. E‑commerce codé possible."
+              - list [ref=f1e89]:
+                - listitem [ref=f1e90]: Conception créative avancée (motion, micro‑interactions, 3D selon besoin)
+                - listitem [ref=f1e91]: Développement Next.js + CMS
+                - listitem [ref=f1e92]: Fonctionnalités spécifiques sur devis (ex. e‑commerce headless)
+              - link "Parler de Signature" [ref=f1e94] [cursor=pointer]:
+                - /url: /contact?offre=signature
+          - paragraph [ref=f1e95]: "Offre de lancement : prix réduits pour les 5 premiers projets signés, en échange d’un témoignage et d’un avis Google. TVA non applicable, art. 293 B du CGI."
+        - region [ref=f1e96]:
+          - heading "Identité visuelle seule" [level=2] [ref=f1e98]
+          - list [ref=f1e99]:
+            - listitem [ref=f1e100]:
+              - heading "Identité essentielle" [level=3] [ref=f1e101]
+              - paragraph [ref=f1e102]: 1 000 – 1 400 € HT
+              - paragraph [ref=f1e103]: Logo + variantes, palette, typos, mini‑guide PDF, exports (SVG, PNG, PDF).
+            - listitem [ref=f1e104]:
+              - heading "Identité complète" [level=3] [ref=f1e105]
+              - paragraph [ref=f1e106]: 1 600 – 2 400 € HT
+              - paragraph [ref=f1e107]: Essentielle + charte détaillée, iconographie/photo, 3 déclinaisons (ex. carte, signature mail, flyer).
+        - region [ref=f1e108]:
+          - heading "Maintenance & accompagnement" [level=2] [ref=f1e110]
+          - list [ref=f1e111]:
+            - listitem [ref=f1e112]:
+              - generic [ref=f1e113]:
+                - heading "Hébergement & veille" [level=3] [ref=f1e114]
+                - paragraph [ref=f1e115]: 29 € HT / mois
+              - list [ref=f1e116]:
+                - listitem [ref=f1e117]: Hébergement sur l’équipe Vercel Pro
+                - listitem [ref=f1e118]: HTTPS, surveillance de disponibilité
+                - listitem [ref=f1e119]: Sauvegarde via Git, test mensuel du formulaire
+                - listitem [ref=f1e120]: Mises à jour de sécurité trimestrielles
+                - listitem [ref=f1e121]: Petite correction (≤ 15 min)
+            - listitem [ref=f1e122]:
+              - generic [ref=f1e123]:
+                - heading "Sérénité" [level=3] [ref=f1e124]
+                - paragraph [ref=f1e125]: 59 € HT / mois
+              - list [ref=f1e126]:
+                - listitem [ref=f1e127]: Tout Hébergement & veille
+                - listitem [ref=f1e128]: Jusqu’à 1 h de modifications par mois
+                - listitem [ref=f1e129]: 1 publication Google Business Profile / mois
+                - listitem [ref=f1e130]: Intervention sous 48 h ouvrées
+            - listitem [ref=f1e131]:
+              - generic [ref=f1e132]:
+                - heading "Croissance" [level=3] [ref=f1e133]
+                - paragraph [ref=f1e134]: 119 € HT / mois
+              - list [ref=f1e135]:
+                - listitem [ref=f1e136]: Tout Sérénité
+                - listitem [ref=f1e137]: 3 h de modifications par mois
+                - listitem [ref=f1e138]: 2 publications Google Business Profile / mois
+                - listitem [ref=f1e139]: Point trimestriel
+            - listitem [ref=f1e140]:
+              - generic [ref=f1e141]:
+                - heading "À la demande" [level=3] [ref=f1e142]
+                - paragraph [ref=f1e143]: "60 € HT / h (pack 5 h : 270 €)"
+              - list [ref=f1e144]:
+                - listitem [ref=f1e145]: Pour les clients sans abonnement
+          - paragraph [ref=f1e146]: Engagement de 3 mois minimum, puis résiliable chaque mois. Les heures non utilisées ne sont pas reportées. Frais tiers (domaine, Planity, Cal.com…) à la charge du client et à son nom.
+        - region [ref=f1e147]:
+          - heading "Questions fréquentes" [level=2] [ref=f1e149]
+          - list [ref=f1e150]:
+            - listitem [ref=f1e151]:
+              - heading "Pourrai‑je modifier moi‑même le site ?" [level=3] [ref=f1e152]
+              - paragraph [ref=f1e153]: "Oui, de deux façons : une interface d’édition simple (horaires, tarifs, actualités, galerie) ou, plus simplement, vous m’envoyez vos changements et je les applique (inclus dans la maintenance Sérénité)."
+            - listitem [ref=f1e154]:
+              - heading "Et la réservation en ligne ?" [level=3] [ref=f1e155]
+              - paragraph [ref=f1e156]: J’intègre votre outil existant (lien ou widget Planity) ou je mets en place Cal.com/Calendly, directement dans le site.
+            - listitem [ref=f1e157]:
+              - heading "Où est hébergé le site ?" [level=3] [ref=f1e158]
+              - paragraph [ref=f1e159]: Sur Vercel (équipe Pro). Le site et le nom de domaine vous appartiennent. Les frais tiers (domaine, Planity, Cal.com…) sont à votre nom.
+            - listitem [ref=f1e160]:
+              - heading "Pourquoi payer plus qu’un Wix ?" [level=3] [ref=f1e161]
+              - paragraph [ref=f1e162]: Pas d’abonnement à vie, de meilleures performances, pas d’extensions à risque, un design vraiment à votre image et l’aide d’un interlocuteur unique, sur place.
+        - region [ref=f1e163]:
+          - heading "De l’idée à la mise en ligne." [level=2] [ref=f1e165]
+          - list [ref=f1e166]:
+            - listitem [ref=f1e167]:
+              - generic [ref=f1e168]: "01"
+              - generic [ref=f1e169]:
+                - heading "On parle de votre projet" [level=3] [ref=f1e170]
+                - paragraph [ref=f1e171]: Vous me présentez votre activité, vos envies et ce que vous souhaitez améliorer. On définit ensemble les priorités, le budget et les contours du projet.
+            - listitem [ref=f1e172]:
+              - generic [ref=f1e173]: "02"
+              - generic [ref=f1e174]:
+                - heading "Je donne forme aux idées" [level=3] [ref=f1e175]
+                - paragraph [ref=f1e176]: Je vous propose une direction visuelle et, pour un site, une organisation des pages. On échange sur ces premières pistes pour valider les bases avant d’aller plus loin.
+            - listitem [ref=f1e177]:
+              - generic [ref=f1e178]: "03"
+              - generic [ref=f1e179]:
+                - heading "Le projet prend vie" [level=3] [ref=f1e180]
+                - paragraph [ref=f1e181]: Je crée les supports ou développe le site à partir de la direction validée. Vous suivez les avancées et on planifie des retours pour affiner le résultat ensemble.
+            - listitem [ref=f1e182]:
+              - generic [ref=f1e183]: "04"
+              - generic [ref=f1e184]:
+                - heading "À toi de le faire vivre" [level=3] [ref=f1e185]
+                - paragraph [ref=f1e186]: Je vous remets les fichiers, mets votre site en ligne et vous explique comment utiliser ce qui a été prévu pour vous. On peut ensuite poursuivre avec un accompagnement adapté à vos besoins.
+        - region [ref=f1e187]:
+          - generic [ref=f1e188]:
+            - paragraph [ref=f1e189]: (c'est parti.)
+            - heading "Prêt à faire évoluer votre présence en ligne ?" [level=2] [ref=f1e190]: Prêt à faire évoluervotre présence en ligne ?
+            - link "Demander un devis" [ref=f1e192] [cursor=pointer]:
+              - /url: /contact
+      - region [ref=f1e193]:
+        - generic [ref=f1e195]:
+          - paragraph [ref=f1e196]: Une idée, une trajectoire
+          - heading "De l’idée à la mise en orbite." [level=2] [ref=f1e197]
+          - paragraph [ref=f1e198]: Identité, design et développement avancent dans une même direction pour transformer votre projet en une expérience cohérente et mémorable.
+          - link "Parler de votre projet" [ref=f1e199] [cursor=pointer]:
+            - /url: /contact
+          - paragraph [ref=f1e200]: "Modèle 3D : Dennis Haupt (3DHaupt)"
+  - contentinfo [ref=f1e201]:
+    - generic [ref=f1e202]:
+      - generic [ref=f1e203]:
+        - paragraph [ref=f1e204]: Belz Studio
+        - paragraph [ref=f1e205]: Studio créatif à Bordeaux, aussi à distance.
+      - navigation "Navigation pied de page" [ref=f1e206]:
+        - list [ref=f1e207]:
+          - listitem [ref=f1e208]:
+            - link "Projets" [ref=f1e209] [cursor=pointer]:
+              - /url: /projets
+              - generic [ref=f1e211]:
+                - generic [ref=f1e212]: Projets
+                - generic [ref=f1e213]: Projets
+          - listitem [ref=f1e214]:
+            - link "Services" [ref=f1e215] [cursor=pointer]:
+              - /url: /services
+              - generic [ref=f1e217]:
+                - generic [ref=f1e218]: Services
+                - generic [ref=f1e219]: Services
+          - listitem [ref=f1e220]:
+            - link "Le studio" [ref=f1e221] [cursor=pointer]:
+              - /url: /le-studio
+              - generic [ref=f1e223]:
+                - generic [ref=f1e224]: Le studio
+                - generic [ref=f1e225]: Le studio
+          - listitem [ref=f1e226]:
+            - link "Contact" [ref=f1e227] [cursor=pointer]:
+              - /url: /contact
+              - generic [ref=f1e229]:
+                - generic [ref=f1e230]: Contact
+                - generic [ref=f1e231]: Contact
+      - generic [ref=f1e232]:
+        - paragraph [ref=f1e233]: © 2026 Belz Studio. Tous droits réservés.
+        - navigation "Informations légales" [ref=f1e234]:
+          - link "Mentions légales" [ref=f1e235] [cursor=pointer]:
+            - /url: /mentions-legales
+          - link "Confidentialité" [ref=f1e236] [cursor=pointer]:
+            - /url: /confidentialite
+  - button "Open Next.js Dev Tools" [ref=f1e242] [cursor=pointer]
