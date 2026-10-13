@@ -21,10 +21,10 @@ export const tournisProject: Project = {
     "Tournis — refonte UX/UI et site web d’une joaillerie à Bordeaux, en collaboration avec LP Design sur l’identité visuelle. Projet fictif.",
   card: {
     image: {
-      src: `${DIR}/TOURNIS_card.svg`,
+      src: `${DIR}/TOURNIS_card.webp`,
       alt: "Brandboard Tournis — identité visuelle",
     },
-    hoverVideo: `${DIR}/siteweb_tournis_video.mp4`,
+    hoverVideo: `${DIR}/siteweb_tournis_video.opt.mp4`,
   },
   sections: [
     {
@@ -33,7 +33,7 @@ export const tournisProject: Project = {
       presentation:
         "Une refonte graphique pour Tournis, joaillerie située à Bordeaux : identité visuelle soignée, supports print, expérience digitale et site web. Projet fictif.",
       visual: {
-        src: `${DIR}/logo-entier.svg`,
+        src: `${DIR}/logo-entier.webp`,
         alt: "Logo Tournis Joaillerie — depuis 1896",
         fit: "contain",
         maxWidth: "sm",
@@ -131,7 +131,7 @@ export const tournisProject: Project = {
       type: "outcome",
       title: "Le site web",
       video: {
-        src: `${DIR}/siteweb_tournis_video.mp4`,
+        src: `${DIR}/siteweb_tournis_video.opt.mp4`,
         poster: `${DIR}/Brandboard.png`,
         alt: "Parcours du site web Tournis",
       },

@@ -21,10 +21,10 @@ export const cacolacProject: Project = {
     "Refonte packaging et identité visuelle Cacolac — gammes Original, menthe, noisette et lait-fraise.",
   card: {
     image: {
-      src: `${DIR}/cacola_card.svg`,
+      src: `${DIR}/cacola_card.webp`,
       alt: "Identité visuelle Cacolac",
     },
-    hoverVideo: `${DIR}/cacola_site_video.mp4`,
+    hoverVideo: `${DIR}/cacola_site_video.opt.mp4`,
   },
   sections: [
     {
@@ -126,7 +126,7 @@ export const cacolacProject: Project = {
       type: "outcome",
       title: "Le site web",
       video: {
-        src: `${DIR}/cacola_site_video.mp4`,
+        src: `${DIR}/cacola_site_video.opt.mp4`,
         poster: `${DIR}/Logo_cacolac.jpg`,
         alt: "Vidéo de navigation du site Cacolac",
       },

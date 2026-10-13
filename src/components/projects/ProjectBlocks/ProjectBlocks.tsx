@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import type { ProjectMedia } from "@/data/projects";
 import { encodePublicPath } from "@/lib/assets";
+import { LazyVideo } from "@/components/ui/LazyVideo/LazyVideo";
 import { cn } from "@/utils/cn";
 
 import styles from "./ProjectBlocks.module.css";
@@ -239,26 +240,18 @@ export function ProjectVideo({
           aspect === "portrait" && styles.videoFigurePortrait,
         )}
       >
-        <video
+        <LazyVideo
           className={cn(
             styles.videoPlayer,
             aspect === "portrait" && styles.videoPlayerPortrait,
             autoplay && styles.videoAuto,
           )}
-          src={encodePublicPath(src)}
-          poster={poster ? encodePublicPath(poster) : undefined}
-          autoPlay={autoplay}
-          muted={autoplay}
-          loop={autoplay}
-          playsInline
-          preload={autoplay ? "auto" : "metadata"}
-          controls={!autoplay}
-          disablePictureInPicture={autoplay}
-          disableRemotePlayback={autoplay}
-          aria-label={alt ?? title ?? "Vidéo du projet"}
-        >
-          Votre navigateur ne prend pas en charge la lecture vidéo.
-        </video>
+          src={src}
+          poster={poster}
+          alt={alt ?? title}
+          autoplay={autoplay}
+          ariaLabel={alt ?? title ?? "Vidéo du projet"}
+        />
       </figure>
     </section>
   );
@@ -299,24 +292,14 @@ export function ProjectPortraitRow({
 
       <div className={styles.portraitLayout}>
         <figure className={styles.portraitVideoWrap}>
-          <video
+          <LazyVideo
             className={cn(styles.portraitVideo, autoplay && styles.videoAuto)}
-            src={encodePublicPath(video.src)}
-            poster={
-              video.poster ? encodePublicPath(video.poster) : undefined
-            }
-            autoPlay={autoplay}
-            muted={autoplay}
-            loop={autoplay}
-            playsInline
-            preload={autoplay ? "auto" : "metadata"}
-            controls={!autoplay}
-            disablePictureInPicture={autoplay}
-            disableRemotePlayback={autoplay}
-            aria-label={video.alt ?? title ?? "Vidéo du projet"}
-          >
-            Votre navigateur ne prend pas en charge la lecture vidéo.
-          </video>
+            src={video.src}
+            poster={video.poster}
+            alt={video.alt ?? title}
+            autoplay={autoplay}
+            ariaLabel={video.alt ?? title ?? "Vidéo du projet"}
+          />
         </figure>
 
         <div className={styles.portraitSide}>
