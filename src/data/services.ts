@@ -59,13 +59,13 @@ export const services: ServiceItem[] = [
 ];
 
 export const servicesPage = {
-  title: "Services",
+  title: "Offres & Tarifs",
   lead:
-    "Du premier logo à la mise en ligne, je t’aide à donner forme à ton projet. Du design et du développement web pour les petites entreprises et les auto-entrepreneurs qui veulent affirmer leur présence.",
-  domainsTitle: "Ton savoir-faire mérite de se voir.",
-  formulasTitle: "À chaque projet, son point de départ.",
+    "Des sites codés à la main pour les indépendants et les petites entreprises. Je conçois votre identité et votre site, du premier croquis à la mise en ligne.",
+  domainsTitle: "Votre savoir-faire mérite de se voir.",
+  formulasTitle: "Offres & Tarifs",
   formulasLead:
-    "Tu lances ton activité, tu repenses ton image ou tu souhaites améliorer l’existant ? Voici trois façons de travailler ensemble. Chaque projet est chiffré sur devis, après un premier échange sur tes besoins et ton budget.",
+    "Des forfaits clairs et adaptés aux TPE, avec des prix \"à partir de\". L’offre de lancement est réservée aux 5 premiers clients, en échange d’un témoignage et d’un avis Google.",
   processTitle: "De l’idée à la mise en ligne.",
 } as const;
 
@@ -81,31 +81,31 @@ export const serviceDomains: ServiceDomain[] = [
     id: "sites-web",
     label: "Sites web sur mesure",
     description:
-      "Un site qui donne envie de découvrir ton activité et facilite la prise de contact. Je conçois et développe ton site autour de ton contenu, de ton identité et des besoins de tes visiteurs, sur ordinateur comme sur mobile.",
+      "Un site qui donne envie de découvrir votre activité et facilite la prise de contact. Je conçois et développe votre site autour de vos contenus, de votre identité et des besoins de vos visiteurs, sur ordinateur comme sur mobile.",
   },
   {
     id: "web-design",
     label: "Web design",
     description:
-      "Donner du caractère à ton site tout en rendant la navigation naturelle. Je travaille les maquettes, l’organisation des contenus et les interactions pour que tes visiteurs trouvent facilement ce qu’ils cherchent.",
+      "Donner du caractère à votre site tout en rendant la navigation naturelle. Je travaille les maquettes, l’organisation des contenus et les interactions pour que vos visiteurs trouvent facilement ce qu’ils cherchent.",
   },
   {
     id: "identite-visuelle",
     label: "Identité visuelle",
     description:
-      "Mettre une image sur ce qui rend ton projet unique. Logo, couleurs, typographies : je crée un univers visuel que tu peux t’approprier et faire vivre sur tous tes supports.",
+      "Mettre une image sur ce qui rend votre projet unique. Logo, couleurs, typographies : je crée un univers visuel que vous pouvez vous approprier et faire vivre sur tous vos supports.",
   },
   {
     id: "supports-communication",
     label: "Supports de communication",
     description:
-      "Prolonger ton univers au-delà du site. Templates Instagram, cartes de visite, flyers ou visuels numériques : des supports cohérents avec ton identité, pensés pour tes usages au quotidien.",
+      "Prolonger votre univers au‑delà du site. Templates Instagram, cartes de visite, flyers ou visuels numériques : des supports cohérents avec votre identité, pensés pour vos usages au quotidien.",
   },
   {
     id: "maintenance-accompagnement",
     label: "Maintenance & accompagnement",
     description:
-      "Un projet continue de vivre après sa mise en ligne. Je peux t’aider à entretenir ton site, faire évoluer ses contenus ou ajouter de nouvelles pages selon tes besoins.",
+      "Un projet continue de vivre après sa mise en ligne. Je peux vous aider à entretenir votre site, faire évoluer ses contenus ou ajouter de nouvelles pages selon vos besoins.",
   },
 ];
 
@@ -115,51 +115,70 @@ export type ServiceFormula = {
   summary: string;
   priceLabel: string;
   includes: string[];
+  ctaLabel?: string;
+  ctaHref?: string;
 };
 
-/** Formules — chaque projet est chiffré sur devis. */
+/** Formules principales — affichées avec des prix publics. */
 export const serviceFormulas: ServiceFormula[] = [
   {
-    id: "activite-en-ligne",
-    name: "Ton activité en ligne",
+    id: "presence",
+    name: "Présence",
     summary:
-      "Pour présenter ce que tu fais, valoriser ton savoir-faire et permettre à tes futurs clients de te contacter.",
-    priceLabel: "Site vitrine · Sur devis",
+      "One‑page codée, claire et efficace pour être trouvé sur Google et réservé en un clic.",
+    priceLabel: "1 190 – 1 400 € HT (lancement : 990 €)",
     includes: [
-      "Organisation des pages et des contenus",
-      "Maquettes personnalisées",
-      "Développement adapté aux mobiles et aux ordinateurs",
-      "Bases du référencement naturel",
-      "Mise en ligne et prise en main",
+      "Sections essentielles (horaires, tarifs, carte, avis, contact)",
+      "Intégration d’un outil de réservation (Planity, Cal.com…)",
+      "Création/optimisation de la fiche Google Business Profile",
+      "SEO local technique, mentions légales, mise en ligne",
+      "1 série de retours + 1 ajustement final",
     ],
+    ctaLabel: "Demander Présence",
+    ctaHref: "/contact?offre=presence",
   },
   {
-    id: "univers-a-toi",
-    name: "Un univers à toi",
+    id: "vitrine",
+    name: "Vitrine",
     summary:
-      "Pour lancer ton projet ou lui donner un nouveau départ, avec une identité reconnaissable et un site qui la prolonge.",
-    priceLabel: "Identité visuelle + site · Sur devis",
+      "4 à 6 pages sur mesure, avec une interface simple pour mettre à jour vos contenus.",
+    priceLabel: "2 200 – 2 800 € HT (lancement : 1 890 €)",
     includes: [
-      "Création du logo et de ses déclinaisons",
-      "Palette de couleurs et sélection typographique",
-      "Guide d’utilisation de ton identité",
-      "Conception et développement du site vitrine",
-      "Fichiers prêts à utiliser pour ta communication",
+      "Maquette personnalisée (1 direction, 2 séries de retours)",
+      "4 à 6 pages (services/tarifs, à propos, réalisations, contact…) ",
+      "Interface d’édition (horaires, tarifs, actus, galerie)",
+      "1 h de formation, SEO local par page",
     ],
+    ctaLabel: "Demander Vitrine",
+    ctaHref: "/contact?offre=vitrine",
   },
   {
-    id: "suite-projet",
-    name: "La suite de ton projet",
+    id: "univers",
+    name: "Univers",
     summary:
-      "Pour garder ton site à jour et faire évoluer ta communication au rythme de ton activité. Une intervention ponctuelle ou un suivi régulier, selon ce dont tu as besoin.",
-    priceLabel: "Maintenance & accompagnement · Sur devis",
+      "Identité visuelle essentielle + Vitrine, avec 5 templates Instagram et une carte de visite.",
+    priceLabel: "3 900 – 4 800 € HT (lancement : 3 400 €)",
     includes: [
-      "Maintenance technique du site selon son environnement",
-      "Mise à jour des contenus et des visuels",
-      "Ajout de pages ou de fonctionnalités sur devis",
-      "Création de supports et de templates pour les réseaux sociaux",
-      "Conseils pour préparer les prochaines évolutions",
+      "Logo + variantes, palette, typos, mini‑guide PDF",
+      "Site Vitrine (cf. ci‑dessus)",
+      "5 templates Instagram et carte de visite (fichiers prêts à imprimer)",
     ],
+    ctaLabel: "Demander Univers",
+    ctaHref: "/contact?offre=univers",
+  },
+  {
+    id: "signature",
+    name: "Signature",
+    summary:
+      "Sur‑mesure créatif : direction artistique poussée, motion, 3D/WebGL, vidéo. E‑commerce codé possible.",
+    priceLabel: "À partir de 6 000 € HT",
+    includes: [
+      "Conception créative avancée (motion, micro‑interactions, 3D selon besoin)",
+      "Développement Next.js + CMS",
+      "Fonctionnalités spécifiques sur devis (ex. e‑commerce headless)",
+    ],
+    ctaLabel: "Parler de Signature",
+    ctaHref: "/contact?offre=signature",
   },
 ];
 
@@ -172,26 +191,106 @@ export type ServiceProcessStep = {
 export const serviceProcess: ServiceProcessStep[] = [
   {
     step: 1,
-    title: "On parle de ton projet",
+    title: "On parle de votre projet",
     description:
-      "Tu me présentes ton activité, tes envies et ce que tu aimerais améliorer. On définit ensemble les priorités, le budget et les contours du projet.",
+      "Vous me présentez votre activité, vos envies et ce que vous souhaitez améliorer. On définit ensemble les priorités, le budget et les contours du projet.",
   },
   {
     step: 2,
     title: "Je donne forme aux idées",
     description:
-      "Je te propose une direction visuelle et, pour un site, une organisation des pages. On échange sur ces premières pistes pour valider les bases avant d’aller plus loin.",
+      "Je vous propose une direction visuelle et, pour un site, une organisation des pages. On échange sur ces premières pistes pour valider les bases avant d’aller plus loin.",
   },
   {
     step: 3,
     title: "Le projet prend vie",
     description:
-      "Je crée les supports ou développe le site à partir de la direction validée. Tu suis les avancées et on prévoit des temps de retour pour affiner le résultat ensemble.",
+      "Je crée les supports ou développe le site à partir de la direction validée. Vous suivez les avancées et on planifie des retours pour affiner le résultat ensemble.",
   },
   {
     step: 4,
     title: "À toi de le faire vivre",
     description:
-      "Je te remets les fichiers, mets ton site en ligne et t’explique comment utiliser ce qui a été prévu pour toi. On peut ensuite poursuivre avec un accompagnement adapté à tes besoins.",
+      "Je vous remets les fichiers, mets votre site en ligne et vous explique comment utiliser ce qui a été prévu pour vous. On peut ensuite poursuivre avec un accompagnement adapté à vos besoins.",
   },
 ];
+
+export type MaintenancePlan = {
+  id: string;
+  name: string;
+  priceLabel: string;
+  includes: string[];
+};
+
+export const maintenancePlans: MaintenancePlan[] = [
+  {
+    id: "hebergement-veille",
+    name: "Hébergement & veille",
+    priceLabel: "29 € HT / mois",
+    includes: [
+      "Hébergement sur l’équipe Vercel Pro",
+      "HTTPS, surveillance de disponibilité",
+      "Sauvegarde via Git, test mensuel du formulaire",
+      "Mises à jour de sécurité trimestrielles",
+      "Petite correction (≤ 15 min)",
+    ],
+  },
+  {
+    id: "serenite",
+    name: "Sérénité",
+    priceLabel: "59 € HT / mois",
+    includes: [
+      "Tout Hébergement & veille",
+      "Jusqu’à 1 h de modifications par mois",
+      "1 publication Google Business Profile / mois",
+      "Intervention sous 48 h ouvrées",
+    ],
+  },
+  {
+    id: "croissance",
+    name: "Croissance",
+    priceLabel: "119 € HT / mois",
+    includes: [
+      "Tout Sérénité",
+      "3 h de modifications par mois",
+      "2 publications Google Business Profile / mois",
+      "Point trimestriel",
+    ],
+  },
+  {
+    id: "a-la-demande",
+    name: "À la demande",
+    priceLabel: "60 € HT / h (pack 5 h : 270 €)",
+    includes: ["Pour les clients sans abonnement"],
+  },
+];
+
+export const maintenanceNote =
+  "Engagement de 3 mois minimum, puis résiliable chaque mois. Les heures non utilisées ne sont pas reportées. Frais tiers (domaine, Planity, Cal.com…) à la charge du client et à son nom.";
+
+export type IdentityOption = {
+  id: string;
+  name: string;
+  priceLabel: string;
+  summary: string;
+};
+
+export const identityOptions: IdentityOption[] = [
+  {
+    id: "identite-essentielle",
+    name: "Identité essentielle",
+    priceLabel: "1 000 – 1 400 € HT",
+    summary:
+      "Logo + variantes, palette, typos, mini‑guide PDF, exports (SVG, PNG, PDF).",
+  },
+  {
+    id: "identite-complete",
+    name: "Identité complète",
+    priceLabel: "1 600 – 2 400 € HT",
+    summary:
+      "Essentielle + charte détaillée, iconographie/photo, 3 déclinaisons (ex. carte, signature mail, flyer).",
+  },
+];
+
+export const launchOfferNote =
+  "Offre de lancement : prix réduits pour les 5 premiers projets signés, en échange d’un témoignage et d’un avis Google. TVA non applicable, art. 293 B du CGI.";

@@ -19,13 +19,6 @@
   }
 }
 
-.hero {
-  display: grid;
-  gap: var(--space-md);
-  max-width: 40rem;
-}
-
-.hero > *,
 .blockHead,
 .domainRow,
 .formulaCard,
@@ -60,6 +53,11 @@
   display: grid;
   gap: var(--space-sm);
   max-width: 52rem;
+}
+
+.intro {
+  gap: var(--space-md);
+  max-width: 46rem;
 }
 
 .blockTitle {
@@ -164,10 +162,10 @@
   margin: 0;
   font-family: var(--font-primary);
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
-  color: color-mix(in srgb, #bac5c6 75%, #184b4b);
+  color: #9ee6b4;
 }
 
 .formulaSummary {
@@ -203,6 +201,116 @@
   height: 0.35rem;
   border-radius: 50%;
   background: color-mix(in srgb, #184b4b 80%, #bac5c6);
+}
+
+.cardCta {
+  margin-top: var(--space-md);
+  width: 100%;
+}
+
+.planPrice {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: #9ee6b4;
+}
+
+.notice {
+  margin: 0;
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  border-radius: var(--border-radius);
+  background: color-mix(in srgb, #123e41 24%, #080c0d);
+  color: color-mix(in srgb, #f9f9f9 80%, transparent);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+}
+
+.identityList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-md);
+}
+
+@media (min-width: 48rem) {
+  .identityList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.identityRow {
+  display: grid;
+  gap: var(--space-xs);
+  padding: var(--space-lg);
+  border: var(--border-width) solid color-mix(in srgb, #184b4b 55%, #080c0d);
+  border-radius: var(--border-radius);
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, #123e41 30%, #080c0d) 0%,
+      color-mix(in srgb, #101b1e 85%, #080c0d) 100%
+    );
+}
+
+.identityName {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: #f9f9f9;
+}
+
+.identityPrice {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: #9ee6b4;
+}
+
+.identitySummary {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  color: color-mix(in srgb, #f9f9f9 72%, transparent);
+}
+
+.faqList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-md);
+}
+
+.faqItem {
+  display: grid;
+  gap: var(--space-xs);
+  padding-block: var(--space-sm);
+  border-bottom: var(--border-width) solid color-mix(in srgb, #f9f9f9 14%, transparent);
+}
+
+.faqQuestion {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: clamp(1.1rem, 1.8vw, 1.25rem);
+  font-weight: var(--font-weight-bold);
+  color: #f9f9f9;
+}
+
+.faqAnswer {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  color: color-mix(in srgb, #f9f9f9 72%, transparent);
 }
 
 .processList {
