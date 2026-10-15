@@ -8,7 +8,7 @@ export type BreadcrumbItem = {
 
 const segmentLabels: Record<string, string> = {
   projets: "Projets",
-  services: "Services",
+  services: "Offres & Tarifs",
   "le-studio": "Le studio",
   contact: "Contact",
   "mentions-legales": "Mentions légales",

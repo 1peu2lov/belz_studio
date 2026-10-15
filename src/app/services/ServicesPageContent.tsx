@@ -41,7 +41,6 @@ function revealSection(
 }
 
 export function ServicesPageContent() {
-  const heroRef = useRef<HTMLElement>(null);
   const domainsRef = useRef<HTMLElement>(null);
   const formulasRef = useRef<HTMLElement>(null);
   const identityRef = useRef<HTMLElement>(null);
@@ -57,10 +56,6 @@ export function ServicesPageContent() {
 
   useEffect(() => {
     const cleanups = [
-      revealSection(
-        heroRef.current,
-        heroRef.current ? Array.from(heroRef.current.children) : [],
-      ),
       revealSection(domainsRef.current, [
         ...(domainsRef.current
           ? Array.from(domainsRef.current.querySelectorAll(`.${styles.blockHead}`))
@@ -138,44 +133,16 @@ export function ServicesPageContent() {
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        <header className={styles.hero} ref={heroRef}>
-          <h1 id="services-title" className={styles.title}>
-            {servicesPage.title}
-          </h1>
-          <p className={styles.lead}>{servicesPage.lead}</p>
-        </header>
-
-        <section
-          className={styles.block}
-          aria-labelledby="domains-title"
-          ref={domainsRef}
-        >
-          <div className={styles.blockHead}>
-            <h2 id="domains-title" className={styles.blockTitle}>
-              {servicesPage.domainsTitle}
-            </h2>
-          </div>
-
-          <ul className={styles.domainList} ref={domainsListRef}>
-            {serviceDomains.map((domain) => (
-              <li key={domain.id} className={styles.domainRow}>
-                <h3 className={styles.domainLabel}>{domain.label}</h3>
-                <p className={styles.domainCopy}>{domain.description}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
-
         <section
           className={styles.block}
           aria-labelledby="formulas-title"
           ref={formulasRef}
         >
-          <div className={styles.blockHead}>
-            <h2 id="formulas-title" className={styles.blockTitle}>
+          <div className={`${styles.blockHead} ${styles.intro}`}>
+            <h1 id="formulas-title" className={styles.title}>
               {servicesPage.formulasTitle}
-            </h2>
-            <p className={styles.blockLead}>{servicesPage.formulasLead}</p>
+            </h1>
+            <p className={styles.lead}>{servicesPage.formulasLead}</p>
           </div>
 
           <ul className={styles.formulaGrid} ref={formulasListRef}>
@@ -272,43 +239,7 @@ export function ServicesPageContent() {
           </ul>
         </section>
 
-        <section
-          className={styles.block}
-          aria-labelledby="process-title"
-          ref={processRef}
-        >
-          <div className={styles.blockHead}>
-            <h2 id="process-title" className={styles.blockTitle}>
-              {servicesPage.processTitle}
-            </h2>
-          </div>
 
-          <ol className={styles.processList} ref={processListRef}>
-            {serviceProcess.map((item) => (
-              <li key={item.step} className={styles.processStep}>
-                <span className={styles.processIndex}>
-                  {String(item.step).padStart(2, "0")}
-                </span>
-                <div className={styles.processBody}>
-                  <h3 className={styles.processName}>{item.title}</h3>
-                  <p className={styles.processCopy}>{item.description}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <ContactCTA
-          title={
-            <>
-              Prêt à faire évoluer
-              <br />
-              votre présence en ligne&nbsp;?
-            </>
-          }
-          buttonLabel="Demander un devis"
-          href="/contact"
-        />
       </div>
 
       <ServicesSpaceship />

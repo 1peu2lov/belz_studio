@@ -59,11 +59,11 @@ export const services: ServiceItem[] = [
 ];
 
 export const servicesPage = {
-  title: "Services",
+  title: "Offres & Tarifs",
   lead:
     "Des sites codés à la main pour les indépendants et les petites entreprises. Je conçois votre identité et votre site, du premier croquis à la mise en ligne.",
   domainsTitle: "Votre savoir-faire mérite de se voir.",
-  formulasTitle: "Offres et tarifs",
+  formulasTitle: "Offres & Tarifs",
   formulasLead:
     "Des forfaits clairs et adaptés aux TPE, avec des prix \"à partir de\". L’offre de lancement est réservée aux 5 premiers clients, en échange d’un témoignage et d’un avis Google.",
   processTitle: "De l’idée à la mise en ligne.",

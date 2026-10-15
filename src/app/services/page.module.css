@@ -19,13 +19,6 @@
   }
 }
 
-.hero {
-  display: grid;
-  gap: var(--space-md);
-  max-width: 40rem;
-}
-
-.hero > *,
 .blockHead,
 .domainRow,
 .formulaCard,
@@ -60,6 +53,11 @@
   display: grid;
   gap: var(--space-sm);
   max-width: 52rem;
+}
+
+.intro {
+  gap: var(--space-md);
+  max-width: 46rem;
 }
 
 .blockTitle {
@@ -164,10 +162,10 @@
   margin: 0;
   font-family: var(--font-primary);
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
-  color: color-mix(in srgb, #bac5c6 75%, #184b4b);
+  color: #9ee6b4;
 }
 
 .formulaSummary {
@@ -214,10 +212,10 @@
   margin: 0;
   font-family: var(--font-primary);
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
-  color: color-mix(in srgb, #bac5c6 85%, #184b4b);
+  color: #9ee6b4;
 }
 
 .notice {
@@ -271,10 +269,10 @@
   margin: 0;
   font-family: var(--font-primary);
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
-  color: color-mix(in srgb, #bac5c6 75%, #184b4b);
+  color: #9ee6b4;
 }
 
 .identitySummary {
